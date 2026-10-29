@@ -56,8 +56,13 @@
   --motion-press: 100ms;
   --motion-screen: 120ms;
   --motion-method: 150ms;
+  --motion-action: 140ms;
+  --motion-content-opacity: 0.5;
   --motion-sheet: 180ms;
   --motion-close: 160ms;
+  --motion-close-from-opacity: 1;
+  --motion-close-from-transform: translateY(0);
+  --motion-close-from-overlay: var(--overlay);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --overlay: rgba(0, 0, 0, 0.6);
 }
