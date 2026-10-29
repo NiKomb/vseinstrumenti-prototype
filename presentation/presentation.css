@@ -24,7 +24,7 @@ strong { font-weight: var(--text-price-weight); }
 .contents button { display: flex; text-align: left; align-items: baseline; gap: var(--space-5); width: 100%; border-radius: var(--radius-sm); padding: var(--space-5); background: var(--deck-blank); font: var(--type-small); }
 .contents button[aria-current="true"] { background: var(--color-bg); color: var(--color-primary); }
 .contents button span:first-child { color: var(--color-subtle); font: var(--type-caption); }
-.viewport { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: var(--space-8); min-width: 0; min-height: 0; }
+.viewport { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: var(--space-8); min-width: 0; min-height: 0; touch-action: manipulation; cursor: pointer; }
 .stage { position: relative; flex: none; width: calc(var(--deck-width) * var(--deck-slide-scale)); height: calc(var(--deck-height) * var(--deck-slide-scale)); background: var(--color-surface); box-shadow: var(--shadow-card); }
 .slides { width: var(--deck-width); height: var(--deck-height); transform: scale(var(--deck-slide-scale)); transform-origin: top left; }
 .slide { position: absolute; inset: var(--space-zero, 0px); width: var(--deck-width); height: var(--deck-height); background: var(--deck-background); overflow: hidden; }

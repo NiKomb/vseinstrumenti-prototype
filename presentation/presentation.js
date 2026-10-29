@@ -60,6 +60,28 @@ function resize() {
 
 previous.addEventListener('click', () => show(current - 1));
 next.addEventListener('click', () => show(current + 1));
+// COMMON: tap either half of the viewing area, including space around the slide.
+// Use the resulting click once for both touch and mouse; drags and pinch gestures
+// must not turn pages, and links keep their own actions.
+let tap = null;
+const interactive = target => target.closest('a, button, input, textarea, select, [contenteditable], [role="button"]');
+viewport.addEventListener('pointerdown', event => {
+  tap = event.isPrimary && event.button === 0 && !interactive(event.target)
+    ? { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false }
+    : null;
+});
+viewport.addEventListener('pointermove', event => {
+  if (tap?.id === event.pointerId && Math.hypot(event.clientX - tap.x, event.clientY - tap.y) > 10) tap.moved = true;
+});
+viewport.addEventListener('pointercancel', () => { tap = null; });
+viewport.addEventListener('click', event => {
+  const gesture = tap;
+  tap = null;
+  if (!gesture || gesture.moved || event.button !== 0 || event.defaultPrevented || interactive(event.target) || window.getSelection()?.toString()) return;
+  if (Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) > 10) return;
+  const bounds = viewport.getBoundingClientRect();
+  show(current + (event.clientX < bounds.left + bounds.width / 2 ? -1 : 1));
+});
 toggle.addEventListener('click', () => {
   contents.hidden = !contents.hidden;
   toggle.setAttribute('aria-expanded', String(!contents.hidden));
