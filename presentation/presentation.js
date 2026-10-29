@@ -1,0 +1,112 @@
+const slides = [...document.querySelectorAll('.slide')];
+const viewport = document.getElementById('viewport');
+const viewer = document.querySelector('.viewer');
+const stage = document.getElementById('stage');
+const count = document.getElementById('count');
+const previous = document.getElementById('previous');
+const next = document.getElementById('next');
+const contents = document.getElementById('contents');
+const toggle = document.getElementById('contents-toggle');
+const contentsList = document.getElementById('contents-list');
+const progress = document.getElementById('progress');
+const fullscreen = document.getElementById('fullscreen');
+let current = 0;
+
+slides.forEach((slide, index) => {
+  const item = document.createElement('li');
+  const button = document.createElement('button');
+  const number = document.createElement('span');
+  const title = document.createElement('span');
+  number.textContent = String(index + 1).padStart(2, '0');
+  title.textContent = slide.dataset.title;
+  button.append(number, title);
+  button.addEventListener('click', () => show(index));
+  item.append(button);
+  contentsList.append(item);
+  const segment = document.createElement('button');
+  segment.setAttribute('aria-label', `Слайд ${index + 1}: ${slide.dataset.title}`);
+  segment.addEventListener('click', () => show(index));
+  progress.append(segment);
+});
+
+function show(index, updateHash = true) {
+  current = Math.max(0, Math.min(slides.length - 1, index));
+  slides.forEach((slide, i) => {
+    slide.hidden = i !== current;
+    contentsList.children[i].firstElementChild.setAttribute('aria-current', String(i === current));
+    progress.children[i].setAttribute('aria-current', String(i === current));
+  });
+  count.textContent = `${String(current + 1).padStart(2, '0')} / ${slides.length}`;
+  previous.disabled = current === 0;
+  next.disabled = current === slides.length - 1;
+  if (updateHash) history.replaceState(null, '', `#${current + 1}`);
+}
+
+function readHash() {
+  const value = Number(location.hash.slice(1));
+  show(Number.isInteger(value) && value > 0 ? value - 1 : 0, false);
+}
+
+function resize() {
+  const style = getComputedStyle(viewport);
+  const width = viewport.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  const height = viewport.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+  const tokens = getComputedStyle(stage);
+  const slideWidth = parseFloat(tokens.getPropertyValue('--deck-width'));
+  const slideHeight = parseFloat(tokens.getPropertyValue('--deck-height'));
+  const maximumScale = document.fullscreenElement === viewer ? Infinity : 1;
+  stage.style.setProperty('--deck-slide-scale', String(Math.max(.01, Math.min(width / slideWidth, height / slideHeight, maximumScale))));
+}
+
+previous.addEventListener('click', () => show(current - 1));
+next.addEventListener('click', () => show(current + 1));
+toggle.addEventListener('click', () => {
+  contents.hidden = !contents.hidden;
+  toggle.setAttribute('aria-expanded', String(!contents.hidden));
+});
+fullscreen.addEventListener('click', async () => {
+  fullscreen.disabled = true;
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await viewer.requestFullscreen();
+  } catch {
+    fullscreen.textContent = 'Полный экран недоступен';
+    fullscreen.setAttribute('aria-label', fullscreen.textContent);
+  } finally {
+    fullscreen.disabled = false;
+  }
+});
+document.addEventListener('fullscreenchange', () => {
+  const active = document.fullscreenElement === viewer;
+  fullscreen.setAttribute('aria-pressed', String(active));
+  fullscreen.textContent = active ? 'Выйти из полного экрана' : 'Полный экран';
+  fullscreen.setAttribute('aria-label', fullscreen.textContent);
+  contents.hidden = true;
+  toggle.setAttribute('aria-expanded', 'false');
+  if (active) viewport.focus({ preventScroll: true });
+  else fullscreen.focus({ preventScroll: true });
+  requestAnimationFrame(resize);
+});
+document.addEventListener('keydown', event => {
+  if (event.ctrlKey || event.altKey || event.metaKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+  if (['ArrowRight', 'PageDown'].includes(event.key) || (event.key === ' ' && (event.target === document.body || document.fullscreenElement === viewer))) {
+    event.preventDefault(); show(current + 1);
+  } else if (['ArrowLeft', 'PageUp'].includes(event.key)) {
+    event.preventDefault(); show(current - 1);
+  } else if (event.key === 'Home') {
+    event.preventDefault(); show(0);
+  } else if (event.key === 'End') {
+    event.preventDefault(); show(slides.length - 1);
+  } else if (event.key === 'Escape') {
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    else if (!contents.hidden) {
+      contents.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+  }
+});
+window.addEventListener('hashchange', readHash);
+new ResizeObserver(resize).observe(viewport);
+readHash();
+resize();

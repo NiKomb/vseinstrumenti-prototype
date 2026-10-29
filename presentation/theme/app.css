@@ -1,0 +1,601 @@
+/* App adaptation from S01–S09. Website source tokens remain unchanged. Motion values are proposed, not measured. */
+:root {
+  --color-primary: #d60000;
+  --color-primary-pressed: #b40303;
+  --color-text: #202629;
+  --color-muted: #92989d;
+  --color-icon: #93999e; /* Website --vi-icon: 147, 153, 158. */
+  --color-subtle: #7c8388;
+  --color-bg: #f4f5f7;
+  --color-surface: #fff;
+  --color-control: #eeeff1;
+  --color-line: #e5e7e8;
+  --color-stroke-control: #dadcde;
+  --color-placeholder: #a0a5aa;
+  --color-secondary-text: #a3a3a3;
+  --color-page: #e5e7e8;
+  --color-focus: #118aed;
+  --color-success: #4aad4c;
+  --color-error: #d60000;
+  --color-delivery-partial: #b38f00; /* Website yellow-700 adapted for status text. */
+  --color-orange: #fa6607;
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 18px;
+  --space-8: 24px;
+  --space-9: 32px;
+  --space-10: 40px;
+  --radius-sm: 8px;
+  --radius-input: 12px;
+  --radius-button: 14px;
+  --radius-card: 18px;
+  --radius-prototype-screen: 40px;
+  --layout-heading-close-margin: auto;
+  --destination-menu-width: 176px;
+  --layout-after-header-scroll-overlap: calc(-1 * var(--radius-card));
+  --layout-after-checkout-top-inset: calc(var(--radius-card) + var(--space-5));
+  --radius-sheet: 18px;
+  --radius-pill: 30px;
+  --shadow-card: 0 2px 6px #0001, 0 0 2px #00000005;
+  --shadow-footer: 0 -2px 8px #00000004;
+  --shadow-phone: 0 8px 64px #0002;
+  --phone-width: 400px;
+  --status-height: 42px;
+  --header-height: 64px;
+  --checkout-header-bottom-trim: var(--space-2);
+  --control-height: 48px;
+  --button-height: 56px;
+  --icon-size: 24px;
+  --icon-leading: 1;
+  --motion-press: 100ms;
+  --motion-screen: 120ms;
+  --motion-method: 150ms;
+  --motion-sheet: 180ms;
+  --motion-close: 160ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+/* P: integer geometry for feedback corrections, not extracted source CSS. */
+:root {
+  --tile-width: 168px;
+  --tile-padding: 8px;
+  --tile-photo-height: 152px;
+  --tile-radius: 12px;
+  --tile-action-height: 36px;
+  --tab-selected-border: 2px;
+}
+
+:root {
+  --product-checkout-height: calc(var(--text-small-leading) + var(--text-caption-leading) + var(--space-1) + 2 * var(--product-checkout-padding-block));
+  --product-checkout-padding-block: var(--space-4);
+}
+
+/* Centralized existing colors/spacing: retained P values, not new visual tuning. */
+:root {
+  --color-system-text: #101314;
+  --color-card-outline: #f3f3f3;
+  --color-gallery-dot: #ddd;
+  --color-discount: #3caa3c;
+  --color-review-media: #333;
+  --color-comparison-background: #eaf5ff;
+  --color-transparent: transparent;
+  --color-map-canvas: #fbfaf3;
+  --color-store-text: #484848;
+  --color-store-note: #999;
+  --color-date-disabled: #aaa;
+  --color-date-rule: #888;
+  /* Keep zero a length so standalone height calculations remain valid. */
+  --space-zero: 0px;
+  --layout-html-margin: var(--space-zero);
+  --layout-phone-margin: auto;
+  --space-px-59: 59px;
+  --layout-status-bar-padding: var(--space-zero) var(--space-9);
+  --space-px-3: 3px;
+  --layout-status-bar-div-gap: var(--space-2);
+  --status-icon-size: 20px;
+  --space-px-10: 10px;
+  --layout-app-header-padding: var(--space-zero) var(--space-px-10);
+  --layout-app-header-gap: var(--space-4);
+  --layout-route-product-app-header-padding: var(--space-zero) var(--space-4);
+  --space-px-1: 1px;
+  --layout-route-product-app-header-gap: var(--space-px-1);
+  --layout-route-product-app-header-icon-button-padding: var(--space-3);
+  --layout-search-trigger-gap: var(--space-4);
+  --layout-search-trigger-padding: var(--space-px-10) var(--space-4);
+  --layout-checkout-page-padding-bottom: var(--space-px-1);
+  --layout-order-footer-padding: var(--space-5) var(--space-7) var(--space-6);
+  --layout-order-footer-hr-margin: var(--space-5) var(--space-zero);
+  --layout-footer-action-gap: var(--space-6);
+  --layout-shipping-unknown-margin: var(--space-zero);
+  --space-px-14: 14px;
+  --layout-cart-footer-padding-top: var(--space-px-14);
+  --space-px-20: 20px;
+  --layout-cart-footer-footer-total-margin-bottom: var(--space-px-20);
+  --layout-cart-footer-footer-total-gap: var(--space-4);
+  --layout-cart-footer-footer-total-old-price-margin-left: auto;
+  --layout-cart-page-padding: var(--space-zero) var(--space-7) var(--space-7);
+  --layout-cart-selection-gap: var(--space-3);
+  --layout-cart-selection-margin-bottom: var(--space-5);
+  --layout-cart-selection-button-padding: var(--space-zero);
+  --layout-cart-number-margin-bottom: var(--space-5);
+  --layout-cart-product-gap: var(--space-6);
+  --space-px-30: 30px;
+  --layout-cart-product-margin-bottom: var(--space-px-30);
+  --layout-cart-picture-button-padding: var(--space-zero);
+  --layout-cart-picture-checkbox-margin-top: var(--space-2);
+  --layout-cart-product-name-padding: var(--space-zero);
+  --layout-cart-product-body-p-small-margin: var(--space-4) var(--space-zero) var(--space-px-14);
+  --layout-cart-price-line-gap: var(--space-4);
+  --layout-cart-availability-margin: var(--space-6) var(--space-zero) var(--space-zero);
+  --layout-empty-cart-gap: var(--space-px-20);
+  --layout-empty-cart-copy-gap: var(--space-5);
+  --layout-after-empty-cart-icon-title-gap: var(--space-6);
+  --layout-after-empty-cart-title-button-gap: var(--space-8);
+  --space-px-80: 80px;
+  --layout-empty-cart-padding: var(--space-px-80) var(--space-zero);
+  --space-px-42: 42px;
+  --layout-promo-padding-top: var(--space-px-42);
+  --space-px-22: 22px;
+  --layout-promo-padding-bottom: var(--space-px-22);
+  --layout-promo-h2-gap: var(--space-5);
+  --layout-promo-h2-margin-bottom: var(--space-6);
+  --layout-promo-input-gap: var(--space-7);
+  --layout-section-heading-padding: var(--space-zero);
+  --layout-section-heading-margin-bottom: var(--space-px-14);
+  --layout-section-heading-gap: var(--space-px-10);
+  --layout-recommendation-track-gap: var(--space-5);
+  --space-px-5: 5px;
+  --layout-recommendation-track-padding: var(--space-1) var(--space-1) var(--space-px-5);
+  --layout-recommendation-gap: var(--space-5);
+  --layout-recommendation-padding: var(--space-7);
+  --layout-recommendation-photo-padding: var(--space-zero);
+  --layout-recommendation-name-padding: var(--space-zero);
+  --layout-recommendation-bottom-gap: var(--space-5);
+  --layout-vertical-cards-recommendation-gap: var(--space-4);
+  --layout-gallery-margin-bottom: var(--space-px-14);
+  --layout-main-photo-padding: var(--space-px-20) var(--space-7) var(--space-zero);
+  --layout-gallery-actions-left: var(--space-7);
+  --space-px-28: 28px;
+  --layout-gallery-actions-bottom: var(--space-px-28);
+  --layout-gallery-actions-gap: var(--space-5);
+  --layout-gallery-dots-gap: var(--space-px-5);
+  --layout-gallery-dots-bottom: var(--space-px-14);
+  --layout-gallery-dots-button-padding: var(--space-zero);
+  --layout-breadcrumbs-gap: var(--space-px-10);
+  --layout-breadcrumbs-margin-bottom: var(--space-6);
+  --layout-breadcrumbs-button-gap: var(--space-4);
+  --layout-breadcrumbs-button-padding: var(--space-px-5) var(--space-px-10);
+  --layout-tagline-margin-bottom: var(--space-4);
+  --layout-product-title-margin-top: var(--space-2);
+  --layout-rating-gap: var(--space-4);
+  --layout-rating-margin: var(--space-px-10) var(--space-zero) var(--space-px-22);
+  --layout-rating-button-gap: var(--space-px-5);
+  --layout-rating-button-padding: var(--space-zero);
+  --layout-power-label-margin-bottom: var(--space-px-10);
+  --layout-power-chips-gap: var(--space-4);
+  --layout-power-chips-margin: var(--space-zero) calc(-1 * var(--space-7)) var(--space-px-28);
+  --layout-power-chips-button-padding: var(--space-4) var(--space-5);
+  --space-px-7: 7px;
+  --space-px-11: 11px;
+  --layout-power-chips-selected-padding: var(--space-px-7) var(--space-px-11);
+  --layout-purchase-card-padding: var(--space-6);
+  --layout-discount-padding: var(--space-1) var(--space-3);
+  --layout-discount-margin-left: var(--space-4);
+  --layout-stock-margin: var(--space-px-20) var(--space-zero) var(--space-3);
+  --layout-stock-line-margin-bottom: var(--space-7);
+  --layout-availability-padding: var(--space-6);
+  --layout-guarantee-margin-top: var(--space-px-14);
+  --layout-guarantee-gap: var(--space-4);
+  --layout-guarantee-padding: var(--space-px-10);
+  --layout-guarantee-icon-last-child-margin-left: auto;
+  --layout-product-buy-gap: var(--space-5);
+  --layout-product-buy-padding: var(--space-4) var(--space-7);
+  --layout-bottom-nav-padding-top: var(--space-px-3);
+  --layout-bottom-nav-button-gap: var(--space-1);
+  --layout-bottom-nav-button-padding: var(--space-zero);
+  --layout-bottom-nav-b-right: calc(-1 * var(--space-3));
+  --layout-bottom-nav-b-top: calc(-1 * var(--space-px-1));
+  --layout-specs-div-padding: var(--space-5) var(--space-zero);
+  --space-px-15: 15px;
+  --layout-specs-div-gap: var(--space-px-15);
+  --layout-specs-dd-margin: var(--space-zero);
+  --layout-spec-expand-padding: var(--space-2) var(--space-zero);
+  --layout-description-copy-padding-top: var(--space-px-20);
+  --layout-reviews-rating-padding: var(--space-6) var(--space-zero);
+  --layout-reviews-rating-gap: var(--space-4);
+  --layout-reviews-rating-icon-margin-left: auto;
+  --layout-review-media-gap: var(--space-4);
+  --layout-review-media-margin-bottom: var(--space-6);
+  --layout-review-media-button-padding: var(--space-zero);
+  --layout-review-media-icon-left: calc(50% - var(--space-px-10));
+  --layout-review-media-icon-top: var(--space-px-22);
+  --layout-review-card-padding: var(--space-5);
+  --layout-review-card-margin-bottom: var(--space-px-10);
+  --layout-review-card-p-margin: var(--space-4) var(--space-zero);
+  --layout-brand-gap: var(--space-7);
+  --layout-brand-margin-bottom: var(--space-7);
+  --layout-brand-p-margin: var(--space-3) var(--space-zero) var(--space-zero);
+  --layout-brand-links-gap: var(--space-5);
+  --layout-brand-links-margin-bottom: var(--space-px-20);
+  --layout-brand-links-button-padding: var(--space-px-10);
+  --layout-tag-list-gap: var(--space-4);
+  --layout-tag-list-margin-top: var(--space-6);
+  --layout-tag-list-button-padding: var(--space-px-5) var(--space-px-10);
+  --layout-comparison-banner-padding: var(--space-px-7);
+  --layout-checkout-details-padding-top: var(--space-px-14);
+  --layout-checkout-details-padding-bottom: var(--space-4);
+  --layout-city-gap: var(--space-3);
+  --layout-city-padding: var(--space-zero);
+  --layout-checkout-details-divider-margin: var(--space-px-10) var(--space-zero) var(--space-px-20);
+  --layout-method-track-gap: var(--space-px-10);
+  --layout-method-track-margin: var(--space-px-14) calc(-1 * var(--space-7)) var(--space-zero);
+  --layout-method-track-padding: var(--space-zero) var(--space-7) var(--space-px-1);
+  --layout-method-padding: var(--space-5);
+  --delivery-method-height: 86px;
+  --layout-method-track-divider-margin: var(--space-7) var(--space-zero) var(--space-zero);
+  --layout-checkout-details-row-padding: var(--space-px-20) var(--space-zero);
+  --layout-checkout-details-row-subtitle-margin-top: var(--space-3);
+  --layout-contact-name-margin-bottom: var(--space-3);
+  --layout-checkout-details-switch-row-margin-top: var(--space-3);
+  --layout-recipient-fields-padding-top: var(--space-5);
+  --layout-recipient-fields-gap: var(--space-5);
+  --layout-recipient-fields-padding-bottom: var(--space-5);
+  --layout-delivery-address-padding-top: var(--space-8);
+  --layout-delivery-address-h2-margin-bottom: var(--space-px-14);
+  --layout-address-button-gap: var(--space-4);
+  --layout-address-button-padding: var(--space-px-7) var(--space-5);
+  --layout-address-extras-gap: var(--space-4);
+  --layout-address-extras-margin-top: var(--space-px-10);
+  --layout-address-extras-field-input-padding: var(--space-5);
+  --layout-lifting-link-gap: var(--space-px-5);
+  --layout-lifting-link-margin-top: var(--space-5);
+  --layout-lifting-link-padding: var(--space-zero);
+  --layout-delivery-address-divider-margin: var(--space-px-28) var(--space-zero) var(--space-zero);
+  --layout-order-products-h2-margin-bottom: var(--space-1);
+  --layout-order-product-thumb-margin: var(--space-6) var(--space-zero) var(--space-7);
+  --layout-order-product-thumb-padding: var(--space-4);
+  --layout-pickup-dates-gap: var(--space-4);
+  --layout-pickup-dates-margin-right: calc(-1 * var(--space-7));
+  --chip-padding: var(--space-3) var(--space-5);
+  --layout-pickup-dates-button-padding: var(--chip-padding);
+  --layout-storage-margin: var(--space-7) var(--space-zero) var(--space-zero);
+  --layout-date-button-padding: var(--space-4) var(--space-5);
+  --layout-payments-h2-margin-bottom: var(--space-px-14);
+  --layout-payment-group-padding: var(--space-px-5);
+  --layout-payment-options-padding: var(--space-zero);
+  --layout-payment-row-gap: var(--space-px-10);
+  --layout-payment-row-padding: var(--space-px-14) var(--space-5);
+  --layout-payments-info-box-padding: var(--space-4);
+  --space-px-9: 9px;
+  --layout-payments-info-box-gap: var(--space-px-9);
+  --layout-payments-info-box-icon-padding: var(--space-5);
+  --layout-comment-textarea-padding: var(--space-5);
+  --layout-carrier-notice-margin: var(--space-px-10) var(--space-zero) var(--space-px-14);
+  --layout-route-map-status-bar-top: var(--space-zero);
+  --layout-route-map-status-bar-left: var(--space-zero);
+  --layout-route-map-status-bar-right: var(--space-zero);
+  --layout-route-map-app-header-top: var(--status-height);
+  --layout-route-map-app-header-left: var(--space-zero);
+  --layout-route-map-app-header-right: var(--space-zero);
+  --layout-static-map-inset: var(--space-zero) var(--space-zero) 30%;
+  --layout-static-map-padding: var(--space-zero);
+  --layout-map-page-icon-button-right: var(--space-7);
+  --space-px-330: 330px;
+  --layout-map-page-icon-button-bottom: var(--space-px-330);
+  --layout-map-point-bottom: var(--space-zero);
+  --layout-map-point-left: var(--space-zero);
+  --layout-map-point-right: var(--space-zero);
+  --space-px-50: 50px;
+  --space-px-34: 34px;
+  --layout-map-point-padding: var(--space-px-50) var(--space-7) var(--space-px-34);
+  --layout-map-point-icon-button-right: var(--space-1);
+  --layout-map-point-icon-button-top: var(--space-3);
+  --layout-map-handle-top: var(--space-px-10);
+  --layout-map-handle-left: calc(50% - var(--space-7));
+  --layout-map-point-h2-margin-bottom: var(--space-5);
+  --layout-map-point-p-margin-bottom: var(--space-px-14);
+  --layout-map-actions-gap: var(--space-4);
+  --layout-map-actions-margin: var(--space-px-28) var(--space-zero) var(--space-7);
+  --layout-map-actions-button-padding: var(--space-px-10) var(--space-4);
+  --layout-store-copy-padding: var(--space-5) var(--space-6) var(--space-px-20);
+  --layout-store-copy-strong-margin-bottom: var(--space-4);
+  --layout-store-copy-p-margin-bottom: var(--space-px-14);
+  --layout-plain-link-padding: var(--space-4) var(--space-zero);
+  --layout-store-warning-margin-top: var(--space-px-34);
+  --layout-store-copy-divider-margin: var(--space-px-14) calc(-1 * var(--space-6));
+  --layout-lifting-copy-padding-bottom: var(--space-px-30);
+  --layout-lifting-copy-li-margin-bottom: var(--space-8);
+  --layout-search-result-gap: var(--space-6);
+  --layout-search-result-padding: var(--space-px-14);
+  --layout-share-text-padding: var(--space-5);
+  --layout-share-text-margin-bottom: var(--space-px-14);
+  --layout-completion-icon-margin: var(--space-zero) var(--space-zero) var(--space-px-20);
+  --layout-app-header-gap-variant-2: var(--space-2);
+  --layout-cart-product-gap-variant-2: var(--space-5);
+  --layout-promo-input-gap-variant-2: var(--space-px-10);
+  --layout-date-wheel-gap: var(--space-5);
+  --layout-date-wheel-margin-inline: var(--space-zero);
+  --layout-order-footer-padding-top: var(--space-4);
+  --layout-order-footer-padding-bottom: var(--space-px-10);
+  --layout-order-footer-hr-margin-variant-2: var(--space-4) var(--space-zero);
+  --space-px-38: 38px;
+  --layout-map-point-padding-top: var(--space-px-38);
+  --layout-map-point-padding-bottom: var(--space-6);
+  --layout-map-actions-margin-variant-2: var(--space-6) var(--space-zero);
+  --layout-route-product-app-header-gap-variant-2: var(--space-px-5);
+  --layout-breadcrumbs-margin-bottom-variant-2: var(--space-px-14);
+  --layout-breadcrumbs-button-padding-block: var(--space-px-3);
+  --layout-tagline-margin-bottom-variant-2: var(--space-zero);
+  --layout-checkout-details-divider-margin-variant-2: var(--space-px-5) var(--space-zero) var(--space-7);
+  --layout-method-track-margin-top: var(--space-5);
+  --layout-method-track-divider-margin-top: var(--space-6);
+  --layout-checkout-details-row-padding-variant-2: var(--space-7) var(--space-zero) var(--space-px-14);
+  --layout-pickup-dates-button-padding-variant-2: var(--chip-padding);
+  --layout-storage-margin-top: var(--space-6);
+  --layout-address-button-padding-variant-2: var(--space-px-5) var(--space-5);
+  --layout-recommendation-name-margin-bottom-variant-2: var(--space-5);
+  --layout-power-chips-button-padding-variant-2: var(--space-px-7) var(--space-5);
+  --layout-power-chips-selected-padding-variant-2: var(--space-3) var(--space-px-11);
+  --layout-method-track-divider-margin-variant-2: var(--space-6) var(--space-zero) var(--space-zero);
+  --space-px-21: 21px;
+  --layout-checkout-details-row-padding-variant-3: var(--space-px-21) var(--space-zero) var(--space-px-14);
+  --layout-checkout-details-padding-bottom-variant-2: var(--space-px-10);
+  --layout-checkout-page-card-margin-bottom: var(--space-px-10);
+  --layout-power-chips-margin-left: var(--space-zero);
+  --layout-power-chips-margin-right: var(--space-zero);
+  --layout-product-page-tabs-padding: var(--space-zero);
+  --layout-product-page-tabs-button-padding: var(--space-px-9) var(--space-4);
+  --layout-recommendation-track-padding-bottom: var(--space-3);
+  --layout-recommendation-favorite-right: var(--space-2);
+  --layout-recommendation-favorite-top: var(--space-2);
+  --layout-recommendation-rating-gap: var(--space-2);
+  --layout-recommendation-rating-margin-bottom: var(--space-3);
+  --layout-recommendation-deal-gap: var(--space-4);
+  --layout-recommendation-deal-discount-padding: var(--space-1) var(--space-3);
+  --layout-vertical-cards-recommendation-name-margin-bottom: var(--space-4);
+  --layout-vertical-cards-recommendation-bottom-margin-top: auto;
+  --layout-vertical-cards-recommendation-bottom-gap: var(--space-5);
+  --layout-bottom-nav-b-padding-inline: var(--space-1);
+  --layout-h1-margin: var(--space-zero);
+  --layout-p-margin: var(--space-zero) var(--space-zero) var(--space-6);
+  --layout-sr-only-padding: var(--space-zero);
+  --layout-sr-only-margin: calc(-1 * var(--space-px-1));
+  --layout-icon-button-padding: var(--space-4);
+  --layout-button-padding: var(--space-5) var(--space-6);
+  --layout-radio-margin: var(--space-zero);
+  --layout-radio-checked-after-inset: var(--space-2);
+  --layout-switch-row-gap: var(--space-6);
+  --layout-switch-row-input-right: var(--space-zero);
+  --layout-switch-track-after-left: var(--space-px-3);
+  --layout-switch-track-after-top: var(--space-px-3);
+  --layout-stepper-icon-button-padding: var(--space-px-5);
+  --layout-tabs-padding: var(--space-px-3);
+  --layout-tabs-button-padding: var(--space-px-5) var(--space-4);
+  --layout-row-gap: var(--space-4);
+  --layout-row-padding: var(--space-px-20) var(--space-zero);
+  --layout-row-subtitle-margin-top: var(--space-3);
+  --layout-overlay-inset: var(--space-zero);
+  --layout-sheet-padding: var(--space-zero) var(--space-7) var(--space-7);
+  --layout-sheet-icon-button-right: var(--space-2);
+  --layout-sheet-icon-button-top: var(--space-px-10);
+  --layout-drag-handle-padding-top: var(--space-px-9);
+  --space-px-25: 25px;
+  --layout-sheet-h2-padding: var(--space-px-10) var(--space-px-25) var(--space-8) var(--space-zero);
+  --layout-sheet-content-padding: var(--space-zero) var(--space-px-1) var(--space-2);
+  --layout-sheet-content-field-margin-bottom: var(--space-px-14);
+  --layout-sheet-actions-gap: var(--space-5);
+  --layout-sheet-actions-padding-top: var(--space-6);
+  --layout-sheet-actions-bottom: var(--space-zero);
+  --layout-date-sheet-padding: var(--space-zero) var(--space-px-28) var(--space-px-20);
+  --layout-date-sheet-h2-padding: var(--space-px-22) var(--space-zero);
+  --space-px-26: 26px;
+  --layout-date-wheel-gap-variant-2: var(--space-px-26);
+  --space-px-62: 62px;
+  --layout-date-wheel-margin: var(--space-px-62) var(--space-px-10) var(--space-px-20);
+  --space-px-56: 56px;
+  --layout-date-column-padding-bottom: var(--space-px-56);
+  --layout-text-link-padding: var(--space-zero);
+  --layout-divider-margin: var(--space-px-20) var(--space-zero);
+  --layout-info-box-gap: var(--space-5);
+  --layout-info-box-padding: var(--space-5);
+  --layout-info-box-margin-top: var(--space-5);
+  --layout-info-box-icon-padding: var(--space-px-10);
+  --layout-info-box-p-margin: var(--space-zero);
+  --layout-long-copy-h3-margin-bottom: var(--space-px-22);
+  --layout-long-copy-p-margin-bottom: var(--space-8);
+  --layout-long-copy-ul-padding-left: var(--space-px-20);
+  --layout-long-copy-ul-margin: var(--space-8) var(--space-zero);
+  --layout-long-copy-li-margin-bottom: var(--space-8);
+  --space-px-60: 60px;
+  --layout-long-copy-subsection-margin-top: var(--space-px-60);
+}
+
+/* Colors of local SVG artwork; raster reference media remain immutable. */
+:root {
+  --color-sber-primary: #32ac54;
+  --color-sber-blue: #00a5e6;
+  --color-sber-yellow: #d6e200;
+  --color-sber-check: #279c4e;
+  --color-yoo-primary: #8b3ffd;
+}
+
+/* U: icon field / default drawing pairs. Hit targets belong to Button. */
+:root {
+  --icon-field-16: 16px;
+  --icon-field-20: 20px;
+  --icon-field-24: 24px;
+  --icon-field-32: 32px;
+  --icon-field-40: 40px;
+  --icon-field-48: 48px;
+  --icon-drawing-12: 12px;
+  --icon-drawing-16: var(--icon-field-16);
+  --icon-drawing-20: var(--icon-field-20);
+  --icon-drawing-24: var(--icon-field-24);
+  --icon-drawing-32: var(--icon-field-32);
+  --icon-drawing-40: var(--icon-field-40);
+  --icon-drawing-48: var(--icon-field-48);
+  --icon-default-drawing-16: var(--icon-drawing-12);
+  --icon-default-drawing-20: var(--icon-drawing-16);
+  --icon-default-drawing-24: var(--icon-drawing-20);
+  --icon-default-drawing-32: var(--icon-drawing-24);
+  --icon-default-drawing-40: var(--icon-drawing-32);
+  --icon-default-drawing-48: var(--icon-drawing-40);
+}
+
+/* Shared product tile geometry. Sections supply data, never layout overrides. */
+:root {
+  --tile-border-width: 1px;
+  --tile-name-height: calc(3 * var(--text-small-leading));
+  --cart-product-name-height: calc(3 * var(--text-body-leading));
+  --cart-tile-name-height: calc(2 * var(--text-body-leading));
+  --tile-stepper-padding-inline: var(--space-1);
+  --cart-selection-padding-block: var(--space-5);
+  --color-product-buy-hint: #f5c2c2;
+  --tile-deal-height: 24px;
+  --tile-stepper-control-size: 32px;
+  --cart-tile-width: 318px;
+  --cart-tile-photo-width: 42px;
+  --cart-tile-photo-height: 52px;
+  --cart-tile-min-height: 130px;
+  --cart-tile-action-width: 96px;
+  --cart-tile-add-width: calc(var(--cart-tile-action-width) - 4 * var(--space-4));
+  --cart-tile-action-height: 44px;
+}
+
+/* COMMON: sheet source structure; no illustration, shared by Before and After. */
+:root {
+  --sheet-handle-height: 28px;
+  --sheet-handle-width: 32px;
+  --sheet-handle-thickness: 4px;
+  --sheet-date-min-height: 346px;
+  --sheet-heading-content-gap: var(--space-4);
+  --sheet-heading-top-gap: var(--space-2);
+  --surface-close-size: var(--icon-field-40);
+  --sheet-header-padding: var(--space-zero) var(--space-9) var(--sheet-heading-content-gap) var(--space-zero);
+  --sheet-content-padding: var(--space-zero) var(--space-px-1) var(--space-2);
+  --sheet-subheading-padding: var(--space-zero) var(--space-px-1) var(--space-4);
+  --sheet-footer-gap: var(--space-5);
+  --sheet-footer-padding: var(--space-6) var(--space-zero) var(--space-zero);
+}
+
+/* AFTER: version-specific containers; shared controls remain common. */
+:root {
+  --after-thumb-size: 56px;
+  --after-payment-height: 70px;
+  --after-cart-photo-size: 70px;
+  --comparison-control-height: 36px;
+}
+
+
+/* AFTER: demo map geometry and authored schematic palette, not source-site measurements. */
+:root {
+  --layout-map-header-overlap: calc(-1 * var(--radius-card));
+  --map-panel-max-height: 100%;
+  --layout-map-chrome-height: calc(var(--status-height) + var(--header-height));
+  --after-map-image-filter: url(#after-map-sharpen) contrast(1.02);
+  --after-map-image-rendering: -webkit-optimize-contrast;
+  --map-pan-limit: 100px;
+  --map-plane-inset: calc(-1 * var(--map-pan-limit));
+  --delivery-map-height: 46dvh;
+  --delivery-map-min-height: 220px;
+  --map-address-x: 50%;
+  --map-address-y: 50%;
+  --after-map-camera-bottom: 180px;
+  --after-map-camera-padding: 80px;
+  --color-map-park: #e6f1d9;
+  --color-map-river: #b8def1;
+  --color-map-road: #ffcf86;
+}
+
+/* COMMON: compact confirmation actions, approved for cart removal. */
+:root {
+  --button-compact-height: var(--control-height);
+  --button-small-height: var(--tile-action-height);
+  /* Two spacing steps down from compact (12/18 -> 6/12). */
+  --button-tight-padding-block: var(--space-3);
+  --button-tight-padding-inline: var(--space-5);
+  --button-tight-height: calc(var(--text-small-leading) + 2 * var(--button-tight-padding-block));
+}
+
+:root { --map-point-max-height: 65%; --map-center-control-bottom: 45%; }
+
+/* COMMON: frame shared by both payment lists. */
+:root { --payment-methods-frame-width: var(--space-2); --payment-method-height: 60px; }
+
+:root { --sheet-embedded-max-height: 65%; }
+
+@media (max-height: 700px) { :root { --status-height: 36px; --header-height: 56px; } }
+
+/* COMMON: preview switcher, separate from the product palette. */
+:root {
+  --color-variant-active: #0655ee;
+  --color-variant-inactive: var(--color-surface);
+  --color-variant-panel: var(--color-surface);
+  --color-variant-pressed: #0645c4;
+  --variant-panel-radius: var(--radius-input);
+  --variant-control-radius: var(--radius-input);
+  --variant-panel-inset: var(--space-px-3);
+  --variant-panel-width: calc(3 * var(--variant-control-height) + 2 * var(--variant-panel-inset) + 2 * var(--space-1));
+  --variant-panel-top: var(--space-5);
+  --variant-panel-left: auto;
+  --variant-panel-edge-gap: var(--space-4);
+  --variant-control-height: var(--icon-field-40);
+  --variant-panel-right: calc((100vw - var(--variant-panel-width)) / 2);
+}
+
+
+/* COMMON: equal square action controls in the product header. */
+:root { --product-header-action-size: 36px; }
+
+/* COMMON: one spacing step inside the product footer counter. */
+:root { --product-buy-stepper-padding-inline: var(--space-2); }
+
+/* COMMON: compact map header, receiving control and back/close action. */
+:root { --map-screen-heading-padding: var(--space-5) var(--space-px-10); }
+
+/* COMMON: map method segment height. */
+:root { --map-method-height: var(--icon-field-40); }
+
+/* COMMON: map list proportions from user references, 1080px normalized to 400px. */
+:root {
+  --pickup-list-collapsed-height: 244px;
+  --pickup-list-expanded-height: calc(100% - var(--space-10));
+  --pickup-list-heading-inset: var(--space-8);
+  --pickup-list-search-height: 44px;
+  --space-px-44: 44px;
+}
+
+:root { --pickup-list-locate-bottom: calc(var(--pickup-list-collapsed-height) + var(--space-8)); --pickup-store-marker-size: 32px; }
+
+:root { --pickup-store-marker-tail-bottom: calc(-1 * var(--space-2)); }
+
+/* COMMON: isolated component catalogue preview stages. */
+:root {
+  --catalogue-sheet-height: 260px;
+  --catalogue-map-height: 440px;
+  --catalogue-markers-height: 240px;
+  --catalogue-point-height: 340px;
+}
+
+/* COMMON: every TextField uses the same light gray focus surface. */
+:root {
+  --color-field-surface: var(--color-surface);
+  --color-field-focus-surface: var(--color-control);
+  --color-recipient-field-focus-surface: var(--color-line);
+}
+
+/* COMMON: expanded product search and its code-scanning tile. */
+:root {
+  --header-search-height: var(--space-px-44);
+  --header-search-results-top: 100%;
+  --header-search-results-height: calc(100dvh - var(--status-height) - var(--header-height));
+  --header-search-actions-width: calc(3 * var(--product-header-action-size) + 2 * var(--space-4));
+  --search-tile-photo-size: var(--space-px-80);
+  --search-tile-buy-width: var(--cart-tile-action-width);
+  --motion-disclosure: 220ms;
+}

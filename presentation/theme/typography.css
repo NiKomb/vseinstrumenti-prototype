@@ -1,0 +1,70 @@
+/* User-approved Inter scale. Website tokens and icon metrics remain separate. */
+:root {
+  --font-family: Inter, Arial, sans-serif;
+  --type-tracking-default: normal;
+  --type-caption-tracking: -0.05em;
+  --text-title-size: 22px;
+  --text-title-leading: 26px;
+  --text-title-weight: 400;
+  --text-title: var(--text-title-weight) var(--text-title-size) /
+    var(--text-title-leading) var(--font-family);
+  --text-heading-size: 20px;
+  --text-heading-leading: 24px;
+  --text-heading-weight: 400;
+  --text-heading: var(--text-heading-weight) var(--text-heading-size) /
+    var(--text-heading-leading) var(--font-family);
+  --text-product-title-size: 18px;
+  --text-product-title-leading: 22px;
+  --type-product-title: var(--text-heading-weight) var(--text-product-title-size) /
+    var(--text-product-title-leading) var(--font-family);
+  --text-body-size: 16px;
+  --text-body-leading: 20px;
+  --text-body-weight: 400;
+  --text-body: var(--text-body-weight) var(--text-body-size) /
+    var(--text-body-leading) var(--font-family);
+  --text-small-size: 14px;
+  --text-small-leading: 18px;
+  --text-small-weight: 400;
+  --text-small: var(--text-small-weight) var(--text-small-size) /
+    var(--text-small-leading) var(--font-family);
+  --text-caption-size: 14px;
+  --text-caption-leading: 18px;
+  --text-caption-weight: 300;
+  --text-caption: var(--text-caption-weight) var(--text-caption-size) /
+    var(--text-caption-leading) var(--font-family);
+  --text-price-size: 22px;
+  --text-price-leading: 26px;
+  --text-price-weight: 500;
+  --text-price: var(--text-price-weight) var(--text-price-size) /
+    var(--text-price-leading) var(--font-family);
+  --text-button: var(--text-small);
+  --type-caption: var(--text-caption);
+  --type-small: var(--text-small);
+  --type-body: var(--text-body);
+  --type-heading: var(--text-heading);
+  --type-title: var(--text-title);
+  --type-price: var(--text-price);
+  --type-button: var(--text-button);
+  --font-family-system: Roboto, Arial, sans-serif;
+  --type-system-status: 500 14px/20px var(--font-family-system);
+  --text-heading-small-size: 18px;
+  --type-heading-small: var(--text-heading-weight)
+    var(--text-heading-small-size) / var(--text-heading-leading)
+    var(--font-family);
+}
+@font-face {
+  font-family: Inter;
+  src: url("../assets/fonts/Inter-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Android system chrome uses the existing official Roboto asset. */
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
