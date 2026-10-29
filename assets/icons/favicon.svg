@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Original project favicon: authored wrench on the app's primary red. -->
+  <rect width="64" height="64" rx="14" fill="#d60000"/>
+  <g transform="translate(-2.32 -2.68)">
+    <path fill="#fff" d="M46 12a16 16 0 0 0-19 21L13 47a6 6 0 0 0 9 9l14-14a16 16 0 0 0 21-19L46 34l-9-3-3-9z"/>
+    <circle cx="18" cy="51" r="2.5" fill="#d60000"/>
+  </g>
+</svg>

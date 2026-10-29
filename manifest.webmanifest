@@ -1,0 +1,26 @@
+{
+  "id": "/vseinstrumenti-prototype/",
+  "name": "ВсеИнструменты — прототип",
+  "short_name": "ВИ · прототип",
+  "description": "Мобильный прототип оформления заказа ВсеИнструменты",
+  "lang": "ru",
+  "start_url": "/vseinstrumenti-prototype/?variant=after",
+  "scope": "/vseinstrumenti-prototype/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/vseinstrumenti-prototype/assets/icons/app-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/vseinstrumenti-prototype/assets/icons/app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
