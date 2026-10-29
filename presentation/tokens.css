@@ -40,77 +40,97 @@
   --color-focus: var(--color-primary);
   --deck-background: url("./assets/gradient-linear.svg") center / cover no-repeat;
   --deck-panel-background: var(--color-surface);
-  --deck-pill-background: var(--color-primary);
-  --deck-pill-color: var(--color-surface);
+  --deck-pill-background: transparent;
+  --deck-pill-color: #707075;
+  --deck-pill-border-color: var(--deck-pill-color);
+  --deck-pill-border-width: 1.5px;
   --deck-cover-background: url("./assets/gradient-red-side.svg") center / cover no-repeat;
   --deck-cover-color: var(--color-surface);
-  --deck-cover-radius: var(--space-zero) var(--space-9) var(--space-9) var(--space-zero);
-  --deck-panel-radius: var(--space-8);
-  --deck-pill-radius: var(--radius-pill);
+  /* COMMON: official communication layouts 1 and 2, 1920 x 1080.
+     Layout 2: logo ratio 1653/837, frame = logo height / 4.
+     Solving width = 3 columns + 2 frames gives width / (12*ratio + 2).
+     Layout 1: the logo sits inside the half-width panel. */
   --deck-width: 1920px;
   --deck-height: 1080px;
-  --deck-half-width: calc(var(--deck-width) / 2);
-  --deck-half-height: calc(var(--deck-height) / 2);
-  --deck-inset: calc(var(--space-9) * 2);
-  --deck-number-top: var(--space-9);
-  --deck-number-right: var(--deck-inset);
-  --deck-row-number-width: calc(var(--space-10) * 2);
+  --deck-logo-ratio: calc(1653 / 837);
+  --deck-inset: calc(var(--deck-width) / (12 * var(--deck-logo-ratio) + 2));
+  --deck-work-width: calc(var(--deck-width) - 2 * var(--deck-inset));
+  --deck-work-height: calc(var(--deck-height) - 2 * var(--deck-inset));
+  --deck-column-width: calc(var(--deck-work-width) / 3);
+  --deck-rail-logo-height: calc(var(--deck-column-width) / var(--deck-logo-ratio));
+  --deck-support-width: calc(var(--deck-column-width) * 2 - var(--deck-gap));
+  --deck-brand-radius: calc(var(--deck-rail-logo-height) / 4);
+  --deck-half-logo-height: 80px;
+  --deck-cover-logo-height: 120px;
+  --deck-cover-logo-ratio: calc(203 / 103);
+  --deck-half-frame: calc(var(--deck-half-logo-height) / 4);
+  --deck-half-panel-width: calc((var(--deck-width) - 2 * var(--deck-half-frame)) / 2);
+  --deck-half-panel-height: calc(var(--deck-height) - 2 * var(--deck-half-frame));
+  --deck-pane-inset: var(--space-9);
+  --deck-copy-inset: calc(var(--space-9) * 2);
+  --deck-half-panel-radius: calc(var(--deck-pane-inset) + var(--deck-half-logo-height) / 4);
   --deck-gap: var(--space-8);
-  --deck-card-inset: var(--space-8);
-  --deck-number: var(--text-price-weight) calc(var(--text-title-size) * 2.5) / calc(var(--text-title-leading) * 2.5) var(--font-family);
-  --deck-ui-height: calc(var(--space-10) + var(--space-6));
-  --deck-ui-button: var(--space-10);
-  --deck-nav-width: 280px;
-  --deck-placeholder-height: calc(var(--space-10) * 2);
-  --deck-screen-width: 100%;
-  --deck-audit-image-height: calc(var(--space-9) * 4);
-  --deck-signal-image-height: calc(var(--space-9) * 3);
-  --deck-blank: transparent;
-  --deck-slide-scale: 1;
-  /* COMMON: horizontal brand grid, adapted to research slides. */
-  --deck-logo-size: 96px;
-  --deck-logo-clearance: calc(var(--deck-logo-size) / 4);
-  --deck-logo-left: calc(var(--deck-inset) - var(--deck-logo-clearance));
-  --deck-logo-top: var(--space-9);
-  --deck-logo-radius: var(--space-9);
-  --deck-content-top: 208px;
-  --deck-header-min-height: 192px;
-  --deck-title-width: calc(var(--deck-width) * 2 / 3);
-  --deck-title: 800 64px / 68px var(--font-family);
+  --deck-card-inset: var(--space-9);
+  --deck-panel-radius: calc(var(--space-8) * 2);
+  --deck-evidence-radius: var(--space-8);
+  --deck-pill-font: var(--deck-small);
+  --deck-pill-padding-y: var(--space-4);
+  --deck-pill-padding-x: var(--space-6);
+  --deck-market-logo-height: var(--space-8);
+  --deck-market-symbol-logo-height: calc(var(--deck-market-logo-height) * 2);
+  --deck-market-logo-width: 200px;
+  --deck-pill-radius: var(--space-6);
+  --deck-number-top: var(--space-8);
+  --deck-number-right: var(--space-9);
+  --deck-row-number-width: calc(var(--space-10) * 2);
+  --deck-number: 600 48px / 52px var(--font-family);
+  --deck-title: 800 56px / 60px var(--font-family);
+  --deck-half-title: 800 48px / 52px var(--font-family);
   --deck-display: 800 76px / 80px var(--font-family);
   --deck-body: 400 32px / 42px var(--font-family);
   --deck-small: 400 26px / 34px var(--font-family);
   --deck-label: 400 20px / 26px var(--font-family);
+  --deck-eyebrow: var(--deck-small);
   --deck-heading: 600 34px / 40px var(--font-family);
-  --deck-art-inset: var(--space-9);
-  --deck-art-top: 160px;
-  --deck-art-bottom: var(--space-9);
-  --deck-art-width: calc(var(--deck-half-width) - 2 * var(--deck-art-inset));
-  --deck-art-height: calc(var(--deck-height) - var(--deck-art-top) - var(--deck-art-bottom));
-  --deck-evidence-width: 330px;
-  --deck-evidence-small-width: 360px;
-  --deck-screenshot-frame-height: 110px;
-  --deck-screenshot-frame-stroke: 2px;
-  /* COMMON: large native prototype captures, matching the 3D visual area. */
-  --deck-proof-copy-width: 400px;
-  --deck-proof-gallery-width: 1352px;
-  --deck-proof-shot-width: 660px;
-  --deck-proof-gallery-top: var(--deck-content-top);
+  --deck-proof-title: var(--deck-half-title);
+  --deck-art-inset: var(--deck-half-frame);
+  --deck-art-width: calc(var(--deck-half-panel-width) - var(--deck-gap));
+  --deck-art-height: var(--deck-half-panel-height);
   --deck-proof-gap: var(--space-9);
-  --deck-proof-title: 800 48px / 52px var(--font-family);
+  --deck-proof-copy-gap: var(--space-5);
+  --deck-proof-copy-gap-dense: var(--space-4);
+  --deck-audit-heading-height: 80px;
+  --deck-audit-description-height: 126px;
+  --deck-proof-figure-width: calc((var(--deck-support-width) - var(--deck-proof-gap)) / 2);
+  --deck-context-screen-width: 440px;
+  --deck-context-screen-height: 660px;
+  --deck-conditions-width: calc((var(--deck-support-width) - var(--deck-gap)) / 2);
   --deck-mobile-radius: var(--space-8);
   --deck-mobile-outline: var(--space-px-1);
   --deck-mobile-shadow: 0 16px 48px #1c21261a;
-  --deck-review-top: 304px;
-  --deck-review-gap: var(--space-8);
-  --deck-audit-screen-height: 440px;
-  --deck-compact-header-top: 56px;
-  --deck-header-indent: 192px;
-  --deck-header-left: calc(var(--deck-inset) + var(--deck-header-indent));
-  --deck-header-width: calc(var(--deck-width) - var(--deck-header-left) - var(--deck-inset) * 2);
-  --deck-body-top: 280px;
-  --deck-conditions-width: 540px;
-  --deck-context-screen-width: 440px;
-  --deck-context-screen-height: var(--deck-proof-shot-width);
   --deck-focus-stroke: 2px;
+  --deck-rule-width: var(--space-px-1);
+  --deck-signal-rule-width: 3px;
+  --deck-ui-height: calc(var(--space-10) + var(--space-6));
+  --deck-ui-button: var(--space-10);
+  --deck-nav-width: 280px;
+  --deck-progress-width: 460px;
+  --deck-blank: transparent;
+  --deck-slide-scale: 1;
+}
+
+/* Derived values must be resolved in the cover scope, where its logo is larger. */
+.cover {
+  --deck-half-logo-height: var(--deck-cover-logo-height);
+  --deck-half-frame: calc(var(--deck-half-logo-height) / 4);
+  --deck-half-panel-width: calc((var(--deck-width) - 2 * var(--deck-half-frame)) / 2);
+  --deck-half-panel-height: calc(var(--deck-height) - 2 * var(--deck-half-frame));
+  --deck-half-panel-radius: calc(var(--deck-pane-inset) + var(--deck-half-logo-height) / 4);
+  --deck-art-inset: var(--deck-half-frame);
+  --deck-art-width: calc(var(--deck-half-panel-width) - var(--deck-gap));
+  --deck-art-height: var(--deck-half-panel-height);
+}
+
+.dense-copy {
+  --deck-proof-copy-gap: var(--deck-proof-copy-gap-dense);
 }
