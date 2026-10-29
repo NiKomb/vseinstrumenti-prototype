@@ -1,5 +1,7 @@
 /* App adaptation from S01–S09. Website source tokens remain unchanged. Motion values are proposed, not measured. */
 :root {
+  /* COMMON: preserve the approved light palette in the prototype and deck. */
+  color-scheme: only light;
   --color-primary: #d60000;
   --color-primary-pressed: #b40303;
   --color-text: #202629;
