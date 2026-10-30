@@ -606,3 +606,18 @@
   --search-tile-buy-width: var(--cart-tile-action-width);
   --motion-disclosure: 220ms;
 }
+
+/* COMMON: payment reference U2026-10-30; authored vector color adaptations. */
+:root {
+  --color-payment-recommendation-bg: #ebf7eb;
+  --color-payment-parts: #7065ef;
+  --color-payment-split: #22c75a;
+  --color-payment-split-accent: #f34e4c;
+  --color-payment-sbp-orange: #ee7024;
+  --color-payment-sbp-yellow: #f5b82a;
+  --color-payment-sbp-purple: #7757a7;
+  --color-payment-sbp-blue: #269ed1;
+  --color-payment-sbp-green: #188541;
+  --color-payment-sbp-lime: #75b843;
+  --color-payment-sbp-red: #d72931;
+}

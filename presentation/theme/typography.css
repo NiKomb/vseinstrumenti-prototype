@@ -45,7 +45,7 @@
   --type-title: var(--text-title);
   --type-price: var(--text-price);
   --type-button: var(--text-button);
-  --font-family-system: Roboto, Arial, sans-serif;
+  --font-family-system: var(--font-family);
   --type-system-status: 500 14px/20px var(--font-family-system);
   --text-heading-small-size: 18px;
   --type-heading-small: var(--text-heading-weight)
@@ -55,15 +55,6 @@
 @font-face {
   font-family: Inter;
   src: url("../assets/fonts/Inter-Variable.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Android system chrome uses the existing official Roboto asset. */
-@font-face {
-  font-family: Roboto;
-  src: url("../assets/fonts/Roboto-Variable.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
