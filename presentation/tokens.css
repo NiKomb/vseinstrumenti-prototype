@@ -107,6 +107,7 @@
   --deck-context-screen-height: 660px;
   --deck-context-triple-screen-width: calc((var(--deck-support-width) - 2 * var(--deck-proof-gap)) / 3);
   --deck-context-triple-screen-height: calc(var(--deck-context-triple-screen-width) * 1.5);
+  --deck-context-pickup-screen-height: calc(var(--deck-context-triple-screen-width) * 889 / 400);
   --deck-conditions-width: calc((var(--deck-support-width) - var(--deck-gap)) / 2);
   --deck-mobile-radius: var(--space-8);
   --deck-mobile-outline: var(--space-px-1);
@@ -145,4 +146,8 @@
 .three-proof {
   --deck-context-screen-width: var(--deck-context-triple-screen-width);
   --deck-context-screen-height: var(--deck-context-triple-screen-height);
+}
+
+.pickup-proof {
+  --deck-context-screen-height: var(--deck-context-pickup-screen-height);
 }
