@@ -138,6 +138,8 @@
   --layout-cart-product-margin-bottom: var(--space-px-30);
   --layout-cart-picture-button-padding: var(--space-zero);
   --layout-cart-picture-checkbox-margin-top: var(--space-2);
+  --cart-photo-selection-inset: var(--space-2);
+  --cart-photo-selection-offset: calc(-1 * var(--cart-photo-selection-inset));
   --layout-cart-product-name-padding: var(--space-zero);
   --layout-cart-product-body-p-small-margin: var(--space-4) var(--space-zero) var(--space-px-14);
   --layout-cart-price-line-gap: var(--space-4);
@@ -462,6 +464,13 @@
   --tile-border-width: 1px;
   --tile-name-height: calc(3 * var(--text-small-leading));
   --cart-product-name-height: calc(3 * var(--text-body-leading));
+  --cart-product-name-height-after: calc(2 * var(--text-body-leading));
+  --cart-product-details-gap: var(--space-2);
+  --control-size-compact: 32px;
+  --stepper-compact-button-width: 36px;
+  --stepper-compact-width: calc(2 * var(--stepper-compact-button-width) + var(--control-size-compact));
+  --stepper-compact-minus-padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+  --stepper-compact-plus-padding: var(--space-4) var(--space-5) var(--space-4) var(--space-4);
   --cart-tile-name-height: calc(2 * var(--text-body-leading));
   --tile-stepper-padding-inline: var(--space-1);
   --cart-selection-padding-block: var(--space-5);
@@ -473,7 +482,7 @@
   --cart-tile-photo-height: 52px;
   --cart-tile-min-height: 130px;
   --cart-tile-action-width: 96px;
-  --cart-tile-add-width: calc(var(--cart-tile-action-width) - 4 * var(--space-4));
+  --cart-tile-add-width: var(--cart-tile-action-height);
   --cart-tile-action-height: 44px;
 }
 
@@ -496,6 +505,7 @@
 /* AFTER: version-specific containers; shared controls remain common. */
 :root {
   --after-thumb-size: 56px;
+  --order-thumb-tag-left: 50%;
   --after-payment-height: 70px;
   --after-cart-photo-size: 70px;
   --comparison-control-height: 36px;

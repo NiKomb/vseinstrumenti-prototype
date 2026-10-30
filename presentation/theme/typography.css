@@ -45,6 +45,10 @@
   --type-title: var(--text-title);
   --type-price: var(--text-price);
   --type-button: var(--text-button);
+  --text-control-compact-leading: 16px;
+  --text-control-compact-weight: 600;
+  --type-control-compact: var(--text-control-compact-weight) var(--text-small-size) /
+    var(--text-control-compact-leading) var(--font-family);
   --font-family-system: var(--font-family);
   --type-system-status: 500 14px/20px var(--font-family-system);
   --text-heading-small-size: 18px;
