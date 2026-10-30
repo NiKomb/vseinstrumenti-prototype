@@ -47,6 +47,8 @@ strong { font-weight: var(--text-price-weight); }
 .layout-half .slide-body { flex: 1; min-height: 0; }
 .slide-art { position: absolute; top: var(--deck-art-inset); right: var(--deck-art-inset); width: var(--deck-art-width); height: var(--deck-art-height); margin: var(--space-zero); display: flex; align-items: center; justify-content: center; }
 .slide-art img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.immersion .slide-art { top: auto; bottom: var(--deck-immersion-art-bottom); right: var(--deck-immersion-art-right); }
+.immersion > .brand-panel, .immersion > .slide-content { z-index: 1; }
 .cover .brand-panel { background: var(--deck-cover-background); color: var(--deck-cover-color); }
 .cover .slide-brand { width: calc(var(--deck-half-logo-height) * var(--deck-cover-logo-ratio)); }
 .cover .eyebrow, .cover .cover-lede { color: var(--deck-cover-color); }
@@ -81,9 +83,6 @@ strong { font-weight: var(--text-price-weight); }
 .market-heading .market-logo--symbol { height: var(--deck-market-symbol-logo-height); }
 .hypothesis-rows { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; }
 .layout-half .slide-body.grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; gap: var(--space-4); }
-.priority { display: flex; align-items: center; gap: var(--space-6); }
-.priority .row-number { font: var(--deck-heading); }
-.priorities .panel > .label { font: var(--deck-small); }
 .row-list { display: grid; gap: var(--deck-gap); align-content: center; }
 .row { display: grid; grid-template-columns: var(--deck-row-number-width) minmax(0, 1fr); align-items: start; gap: var(--deck-gap); }
 .row-number { color: var(--color-primary); font: var(--deck-number); font-variant-numeric: tabular-nums; }
@@ -103,8 +102,6 @@ strong { font-weight: var(--text-price-weight); }
 .review-gallery img { border-radius: var(--deck-evidence-radius); }
 .mobile-screen { width: 100%; border-radius: var(--deck-mobile-radius); overflow: hidden; background: var(--color-surface); box-shadow: var(--deck-mobile-shadow); outline: var(--deck-mobile-outline) solid var(--color-line); }
 .mobile-screen svg, .mobile-screen img { display: block; width: 100%; height: auto; }
-.audit-screen { display: flex; flex-direction: column; gap: var(--space-6); }
-.audit-screen h3 { min-height: var(--deck-audit-heading-height); }
 .audit-screen > p { min-height: var(--deck-audit-description-height); }
 .conditions-gallery { display: flex; align-items: flex-start; justify-content: center; gap: var(--deck-gap); }
 .conditions-gallery figure { margin: var(--space-zero); width: var(--deck-conditions-width); display: grid; gap: var(--deck-gap); }
@@ -119,6 +116,7 @@ strong { font-weight: var(--text-price-weight); }
 .keep-together, .proof-copy strong { white-space: nowrap; }
 .proof-slide .slide-content { justify-content: center; }
 .proof-gallery { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--deck-proof-gap); align-items: start; }
+.three-proof .proof-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .proof-figure { margin: var(--space-zero); min-width: 0; display: grid; gap: var(--deck-gap); }
 .proof-figure figcaption { font: var(--deck-heading); width: var(--deck-context-screen-width); margin-inline: auto; }
 .proof-figure.after figcaption { color: var(--color-primary); }

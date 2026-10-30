@@ -13,6 +13,19 @@ const fullscreen = document.getElementById('fullscreen');
 let current = 0;
 let arrowFrame = 0;
 
+// Bind Russian prepositions, short conjunctions and particles to the next word.
+for (const slide of slides) {
+  const walker = document.createTreeWalker(slide, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.parentElement?.namespaceURI !== 'http://www.w3.org/1999/xhtml') continue;
+    node.textContent = node.textContent.replace(
+      /(?<![\p{L}\p{N}-])(а|и|или|но|не|ни|без|в|во|для|до|за|из|из-за|из-под|к|ко|между|на|над|о|об|обо|от|перед|по|под|при|про|с|со|у|через)[ \t]+(?=\S|$)/giu,
+      '$1\u00a0',
+    );
+  }
+}
+
 // Keep annotations outside the screenshot, anchored to its original SVG coordinates.
 function drawFocusArrows(slide) {
   slide.querySelector('.focus-arrows')?.remove();
@@ -39,12 +52,13 @@ function drawFocusArrows(slide) {
     const screen = point.matrixTransform(svg.getScreenCTM());
     const x = (screen.x - bounds.x) * width / bounds.width;
     const y = (screen.y - bounds.y) * height / bounds.height;
+    const direction = target.dataset.focusDirection === 'left' ? -1 : 1;
     const line = document.createElementNS(namespace, 'path');
     line.classList.add('focus-arrow-line');
-    line.setAttribute('d', `M ${x - arrowWidth} ${y - arrowHeight} C ${x - arrowWidth} ${y}, ${x - arrowWidth} ${y}, ${x - headWidth} ${y}`);
+    line.setAttribute('d', `M ${x - direction * arrowWidth} ${y - arrowHeight} C ${x - direction * arrowWidth} ${y}, ${x - direction * arrowWidth} ${y}, ${x - direction * headWidth} ${y}`);
     const head = document.createElementNS(namespace, 'path');
     head.classList.add('focus-arrow-head');
-    head.setAttribute('d', `M ${x - headWidth} ${y - headHeight / 2} L ${x} ${y} L ${x - headWidth} ${y + headHeight / 2} Z`);
+    head.setAttribute('d', `M ${x - direction * headWidth} ${y - headHeight / 2} L ${x} ${y} L ${x - direction * headWidth} ${y + headHeight / 2} Z`);
     overlay.append(line, head);
   }
   slide.append(overlay);

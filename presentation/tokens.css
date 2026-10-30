@@ -96,14 +96,17 @@
   --deck-art-inset: var(--deck-half-frame);
   --deck-art-width: calc(var(--deck-half-panel-width) - var(--deck-gap));
   --deck-art-height: var(--deck-half-panel-height);
+  --deck-immersion-art-bottom: calc(var(--deck-card-inset) * -10);
+  --deck-immersion-art-right: calc(var(--deck-card-inset) * -3);
   --deck-proof-gap: var(--space-9);
   --deck-proof-copy-gap: var(--space-5);
   --deck-proof-copy-gap-dense: var(--space-4);
-  --deck-audit-heading-height: 80px;
   --deck-audit-description-height: 126px;
   --deck-proof-figure-width: calc((var(--deck-support-width) - var(--deck-proof-gap)) / 2);
   --deck-context-screen-width: 440px;
   --deck-context-screen-height: 660px;
+  --deck-context-triple-screen-width: calc((var(--deck-support-width) - 2 * var(--deck-proof-gap)) / 3);
+  --deck-context-triple-screen-height: calc(var(--deck-context-triple-screen-width) * 1.5);
   --deck-conditions-width: calc((var(--deck-support-width) - var(--deck-gap)) / 2);
   --deck-mobile-radius: var(--space-8);
   --deck-mobile-outline: var(--space-px-1);
@@ -137,4 +140,9 @@
 
 .dense-copy {
   --deck-proof-copy-gap: var(--deck-proof-copy-gap-dense);
+}
+
+.three-proof {
+  --deck-context-screen-width: var(--deck-context-triple-screen-width);
+  --deck-context-screen-height: var(--deck-context-triple-screen-height);
 }
