@@ -173,7 +173,7 @@
   --layout-gallery-dots-gap: var(--space-px-5);
   --layout-gallery-dots-bottom: var(--space-px-14);
   --layout-gallery-dots-button-padding: var(--space-zero);
-  --layout-breadcrumbs-gap: var(--space-px-10);
+  --layout-breadcrumbs-gap: var(--space-2);
   --layout-breadcrumbs-margin-bottom: var(--space-6);
   --layout-breadcrumbs-button-gap: var(--space-4);
   --layout-breadcrumbs-button-padding: var(--space-px-5) var(--space-px-10);
