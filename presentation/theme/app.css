@@ -52,6 +52,7 @@
   --header-height: 64px;
   --checkout-header-bottom-trim: var(--space-2);
   --control-height: 48px;
+  --field-outline-error-reserve: calc(var(--text-small-leading) / 2);
   --button-height: 56px;
   --icon-size: 24px;
   --icon-leading: 1;
