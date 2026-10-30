@@ -108,7 +108,11 @@
   --deck-mobile-radius: var(--space-8);
   --deck-mobile-outline: var(--space-px-1);
   --deck-mobile-shadow: 0 16px 48px #1c21261a;
-  --deck-focus-stroke: 2px;
+  --deck-focus-stroke: 4px;
+  --deck-focus-arrow-width: 84px;
+  --deck-focus-arrow-height: 84px;
+  --deck-focus-head-width: 18px;
+  --deck-focus-head-height: 20px;
   --deck-rule-width: var(--space-px-1);
   --deck-signal-rule-width: 3px;
   --deck-ui-height: calc(var(--space-10) + var(--space-6));

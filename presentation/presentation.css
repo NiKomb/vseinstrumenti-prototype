@@ -124,7 +124,11 @@ strong { font-weight: var(--text-price-weight); }
 .proof-figure.after figcaption { color: var(--color-primary); }
 .context-proof .mobile-screen { width: var(--deck-context-screen-width); height: var(--deck-context-screen-height); margin-inline: auto; }
 .context-proof .source-screen { display: block; width: 100%; height: 100%; }
-.focus-outline { fill: none; stroke: var(--color-primary); stroke-width: var(--deck-focus-stroke); vector-effect: non-scaling-stroke; }
+.focus-target { fill: none; stroke: none; pointer-events: none; }
+.focus-arrows { position: absolute; inset: var(--space-zero); width: 100%; height: 100%; overflow: visible; pointer-events: none; color: var(--color-primary); }
+.focus-arrow-line, .focus-arrow-head { stroke: currentColor; stroke-width: var(--deck-focus-stroke); stroke-linecap: round; stroke-linejoin: round; }
+.focus-arrow-line { fill: none; }
+.focus-arrow-head { fill: currentColor; }
 .single-proof .proof-gallery { grid-template-columns: minmax(0, 1fr); }
 .viewer-footer { flex-shrink: 0; min-height: var(--deck-ui-height); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: var(--space-4) var(--space-8); }
 .viewer-progress { display: flex; gap: var(--space-2); flex: 1; max-width: var(--deck-progress-width); }

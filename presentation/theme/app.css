@@ -36,6 +36,8 @@
   --radius-button: 14px;
   --radius-card: 18px;
   --radius-prototype-screen: 40px;
+  --radius-bottom-panel: 20px;
+  --layout-panel-underlay-margin-bottom: calc(-1 * var(--radius-bottom-panel));
   --layout-heading-close-margin: auto;
   --destination-menu-width: 176px;
   --layout-after-header-scroll-overlap: calc(-1 * var(--radius-card));
@@ -43,7 +45,7 @@
   --radius-sheet: 18px;
   --radius-pill: 30px;
   --shadow-card: 0 2px 6px #0001, 0 0 2px #00000005;
-  --shadow-footer: 0 -2px 8px #00000004;
+  --shadow-footer: 0 -4px 20px #2026290d;
   --shadow-phone: 0 8px 64px #0002;
   --phone-width: 400px;
   --status-height: 42px;

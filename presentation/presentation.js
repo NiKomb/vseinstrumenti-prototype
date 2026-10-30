@@ -11,6 +11,52 @@ const contentsList = document.getElementById('contents-list');
 const progress = document.getElementById('progress');
 const fullscreen = document.getElementById('fullscreen');
 let current = 0;
+let arrowFrame = 0;
+
+// Keep annotations outside the screenshot, anchored to its original SVG coordinates.
+function drawFocusArrows(slide) {
+  slide.querySelector('.focus-arrows')?.remove();
+  const targets = [...slide.querySelectorAll('.focus-target')];
+  if (!targets.length) return;
+  const namespace = 'http://www.w3.org/2000/svg';
+  const overlay = document.createElementNS(namespace, 'svg');
+  overlay.classList.add('focus-arrows');
+  overlay.setAttribute('aria-hidden', 'true');
+  const tokens = getComputedStyle(slide);
+  const width = parseFloat(tokens.getPropertyValue('--deck-width'));
+  const height = parseFloat(tokens.getPropertyValue('--deck-height'));
+  const arrowWidth = parseFloat(tokens.getPropertyValue('--deck-focus-arrow-width'));
+  const arrowHeight = parseFloat(tokens.getPropertyValue('--deck-focus-arrow-height'));
+  const headWidth = parseFloat(tokens.getPropertyValue('--deck-focus-head-width'));
+  const headHeight = parseFloat(tokens.getPropertyValue('--deck-focus-head-height'));
+  overlay.setAttribute('viewBox', `0 0 ${width} ${height}`);
+  const bounds = slide.getBoundingClientRect();
+  for (const target of targets) {
+    const svg = target.ownerSVGElement;
+    const point = svg.createSVGPoint();
+    point.x = target.cx.baseVal.value;
+    point.y = target.cy.baseVal.value;
+    const screen = point.matrixTransform(svg.getScreenCTM());
+    const x = (screen.x - bounds.x) * width / bounds.width;
+    const y = (screen.y - bounds.y) * height / bounds.height;
+    const line = document.createElementNS(namespace, 'path');
+    line.classList.add('focus-arrow-line');
+    line.setAttribute('d', `M ${x - arrowWidth} ${y - arrowHeight} C ${x - arrowWidth} ${y}, ${x - arrowWidth} ${y}, ${x - headWidth} ${y}`);
+    const head = document.createElementNS(namespace, 'path');
+    head.classList.add('focus-arrow-head');
+    head.setAttribute('d', `M ${x - headWidth} ${y - headHeight / 2} L ${x} ${y} L ${x - headWidth} ${y + headHeight / 2} Z`);
+    overlay.append(line, head);
+  }
+  slide.append(overlay);
+}
+
+function queueFocusArrows() {
+  cancelAnimationFrame(arrowFrame);
+  arrowFrame = requestAnimationFrame(() => {
+    if (matchMedia('print').matches) slides.forEach(drawFocusArrows);
+    else drawFocusArrows(slides[current]);
+  });
+}
 
 slides.forEach((slide, index) => {
   const item = document.createElement('li');
@@ -40,6 +86,7 @@ function show(index, updateHash = true) {
   previous.disabled = current === 0;
   next.disabled = current === slides.length - 1;
   if (updateHash) history.replaceState(null, '', `#${current + 1}`);
+  queueFocusArrows();
 }
 
 function readHash() {
@@ -56,6 +103,7 @@ function resize() {
   const slideHeight = parseFloat(tokens.getPropertyValue('--deck-height'));
   const maximumScale = document.fullscreenElement === viewer ? Infinity : 1;
   stage.style.setProperty('--deck-slide-scale', String(Math.max(.01, Math.min(width / slideWidth, height / slideHeight, maximumScale))));
+  queueFocusArrows();
 }
 
 previous.addEventListener('click', () => show(current - 1));
@@ -130,5 +178,9 @@ document.addEventListener('keydown', event => {
 });
 window.addEventListener('hashchange', readHash);
 new ResizeObserver(resize).observe(viewport);
+document.fonts.ready.then(resize);
+window.addEventListener('load', resize);
+matchMedia('print').addEventListener('change', queueFocusArrows);
+window.addEventListener('beforeprint', () => slides.forEach(drawFocusArrows));
 readHash();
 resize();
