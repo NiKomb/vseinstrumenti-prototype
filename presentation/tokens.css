@@ -150,4 +150,5 @@
 
 .pickup-proof {
   --deck-context-screen-height: var(--deck-context-pickup-screen-height);
+  --deck-mobile-radius: var(--space-10);
 }
