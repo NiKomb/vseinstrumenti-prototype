@@ -1,3 +1,5 @@
+@import url("./theme/foundation.css");
+@import url("./theme/semantic.css");
 @import url("./theme/app.css");
 @import url("./theme/typography.css");
 
@@ -28,13 +30,13 @@
   --text-heading-weight: 600;
   --text-title-weight: 800;
   --text-price-weight: 600;
-  --color-primary: #d60000;
+  --color-primary: rgb(var(--vi-primary));
   --color-primary-pressed: #b80202;
-  --color-text: #1c2126;
+  --color-text: rgb(var(--vi-text));
   --color-subtle: color-mix(in srgb, var(--color-text) 76%, white);
   --color-bg: #f2f3f6;
-  --color-surface: #ffffff;
-  --color-control: #eceef4;
+  --color-surface: rgb(var(--vi-background));
+  --color-control: var(--vi-color-gray-200);
   --color-line: #e2e4e9;
   --color-stroke-control: var(--color-line);
   --color-focus: var(--color-primary);
@@ -60,7 +62,7 @@
   --deck-rail-logo-height: calc(var(--deck-column-width) / var(--deck-logo-ratio));
   --deck-support-width: calc(var(--deck-column-width) * 2 - var(--deck-gap));
   --deck-brand-radius: calc(var(--deck-rail-logo-height) / 4);
-  --deck-half-logo-height: 80px;
+  --deck-half-logo-height: var(--vi-vr-jade);
   --deck-cover-logo-height: 120px;
   --deck-cover-logo-ratio: calc(203 / 103);
   --deck-half-frame: calc(var(--deck-half-logo-height) / 4);
@@ -86,12 +88,12 @@
   --deck-number: 600 48px / 52px var(--font-family);
   --deck-title: 800 56px / 60px var(--font-family);
   --deck-half-title: 800 48px / 52px var(--font-family);
-  --deck-display: 800 76px / 80px var(--font-family);
-  --deck-body: 400 32px / 42px var(--font-family);
+  --deck-display: 800 76px / var(--vi-vr-jade) var(--font-family);
+  --deck-body: 400 var(--vi-vr-purple) / 42px var(--font-family);
   --deck-small: 400 26px / 34px var(--font-family);
-  --deck-label: 400 20px / 26px var(--font-family);
+  --deck-label: 400 var(--vi-vr-red) / 26px var(--font-family);
   --deck-eyebrow: var(--deck-small);
-  --deck-heading: 600 34px / 40px var(--font-family);
+  --deck-heading: 600 34px / var(--vi-vr-sapphire) var(--font-family);
   --deck-proof-title: var(--deck-half-title);
   --deck-art-inset: var(--deck-half-frame);
   --deck-art-width: calc(var(--deck-half-panel-width) - var(--deck-gap));
@@ -111,12 +113,12 @@
   --deck-conditions-width: calc((var(--deck-support-width) - var(--deck-gap)) / 2);
   --deck-mobile-radius: var(--space-8);
   --deck-mobile-outline: var(--space-px-1);
-  --deck-mobile-shadow: 0 16px 48px #1c21261a;
-  --deck-focus-stroke: 4px;
+  --deck-mobile-shadow: 0 var(--vi-vr-pink) 48px #1c21261a;
+  --deck-focus-stroke: var(--vi-vr-yellow);
   --deck-focus-arrow-width: 84px;
   --deck-focus-arrow-height: 84px;
   --deck-focus-head-width: 18px;
-  --deck-focus-head-height: 20px;
+  --deck-focus-head-height: var(--vi-vr-red);
   --deck-rule-width: var(--space-px-1);
   --deck-signal-rule-width: 3px;
   --deck-ui-height: calc(var(--space-10) + var(--space-6));

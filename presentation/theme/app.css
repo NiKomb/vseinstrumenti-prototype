@@ -1,62 +1,84 @@
-/* App adaptation from S01–S09. Website source tokens remain unchanged. Motion values are proposed, not measured. */
+/* COMMON. Values inherit the extracted website primitives. Existing scoped
+   adaptations approved by U2026-11-02: docs/design/components.md and motion.md. */
+:root {
+  /* COMMON catalog: reference proportions, existing prototype scale. */
+  --catalog-category-width: 116px;
+  --catalog-category-height: 148px;
+  --catalog-category-photo-height: var(--vi-vr-jade);
+  --catalog-product-photo-size: 112px;
+  --catalog-product-action-width: 112px;
+  --catalog-product-gap: var(--space-9);
+  --catalog-products-top-inset: var(--space-8);
+  --catalog-no-results-top-inset: calc(var(--space-8) + var(--space-8));
+  --empty-collection-illustration-width: 112px;
+  --empty-collection-illustration-height: var(--empty-collection-illustration-width);
+  --empty-collection-illustration-stroke: 3px;
+  --empty-collection-copy-width: 320px;
+}
 :root {
   /* COMMON: preserve the approved light palette in the prototype and deck. */
   color-scheme: only light;
-  --color-primary: #d60000;
-  --color-primary-pressed: #b40303;
-  --color-text: #202629;
-  --color-muted: #92989d;
-  --color-icon: #93999e; /* Website --vi-icon: 147, 153, 158. */
-  --color-subtle: #7c8388;
-  --color-bg: #f4f5f7;
-  --color-surface: #fff;
-  --color-control: #eeeff1;
-  --color-line: #e5e7e8;
-  --color-stroke-control: #dadcde;
-  --color-placeholder: #a0a5aa;
-  --color-secondary-text: #a3a3a3;
-  --color-page: #e5e7e8;
-  --color-focus: #118aed;
-  --color-success: #4aad4c;
-  --color-error: #d60000;
-  --color-delivery-partial: #b38f00; /* Website yellow-700 adapted for status text. */
-  --color-orange: #fa6607;
-  --space-1: 2px;
-  --space-2: 4px;
-  --space-3: 6px;
-  --space-4: 8px;
-  --space-5: 12px;
-  --space-6: 16px;
+  --color-primary: rgb(var(--vi-primary));
+  --color-primary-pressed: var(--vi-color-red-700);
+  --color-text: rgb(var(--vi-text));
+  --color-muted: rgb(var(--vi-text-secondary));
+  --color-icon: rgb(var(--vi-icon)); /* Website --vi-icon: 147, 153, 158. */
+  --color-subtle: var(--vi-color-gray-700);
+  --color-bg: rgb(var(--vi-background-secondary));
+  --color-surface: rgb(var(--vi-background));
+  --color-control: rgb(var(--vi-secondary-light));
+  --color-line: rgb(var(--vi-stroke));
+  --color-stroke-control: rgb(var(--vi-secondary));
+  --color-placeholder: var(--vi-color-gray-600);
+  --color-secondary-text: var(--vi-color-gray-600);
+  --color-page: rgb(var(--vi-stroke));
+  --color-focus: var(--vi-color-blue-500);
+  --color-success: rgb(var(--vi-success));
+  --color-error: var(--vi-color-red-500);
+  --color-delivery-partial: var(--vi-color-yellow-500);
+  --color-orange: var(--vi-color-orange-500);
+  --space-1: var(--vi-vr-peal);
+  --space-2: var(--vi-vr-yellow);
+  --space-3: var(--vi-vr-melon);
+  --space-4: var(--vi-vr-brown);
+  --space-5: var(--vi-vr-orange);
+  --space-6: var(--vi-vr-pink);
   --space-7: 18px;
-  --space-8: 24px;
-  --space-9: 32px;
-  --space-10: 40px;
-  --radius-sm: 8px;
-  --radius-input: 12px;
-  --radius-button: 14px;
-  --radius-card: 18px;
-  --radius-prototype-screen: 40px;
-  --radius-bottom-panel: 20px;
+  --space-8: var(--vi-vr-fuchsia);
+  --space-9: var(--vi-vr-purple);
+  --space-10: var(--vi-vr-sapphire);
+  --radius-sm: var(--vi-radius-xs);
+  --radius-input: var(--vi-radius-s);
+  --radius-button: var(--vi-radius-s);
+  --radius-card: var(--vi-radius-l);
+  --radius-prototype-screen: var(--vi-radius-3xl);
+  --radius-bottom-panel: var(--vi-radius-l);
   --layout-panel-underlay-margin-bottom: calc(-1 * var(--radius-bottom-panel));
   --layout-heading-close-margin: auto;
   --destination-menu-width: 176px;
   --layout-after-header-scroll-overlap: calc(-1 * var(--radius-card));
   --layout-after-checkout-top-inset: calc(var(--radius-card) + var(--space-5));
-  --radius-sheet: 18px;
-  --radius-pill: 30px;
-  --shadow-card: 0 2px 6px #0001, 0 0 2px #00000005;
-  --shadow-footer: 0 -4px 20px #2026290d;
-  --shadow-phone: 0 8px 64px #0002;
+  --radius-sheet: var(--vi-radius-l);
+  --radius-pill: var(--vi-radius-3xl);
+  --radius-round: 50%;
+  --shadow-card: 0 var(--vi-vr-peal) var(--vi-vr-melon) #0001, 0 0 var(--vi-vr-peal) #00000005;
+  --shadow-footer: 0 -4px var(--vi-vr-red) #2026290d;
+  --shadow-phone: 0 var(--vi-vr-brown) var(--vi-vr-green) #0002;
   --phone-width: 400px;
   --status-height: 42px;
-  --header-height: 64px;
+  --header-height: var(--vi-vr-green);
   --checkout-header-bottom-trim: var(--space-2);
   --control-height: 48px;
   --field-outline-error-reserve: calc(var(--text-small-leading) / 2);
   --button-height: 56px;
-  --icon-size: 24px;
+  --icon-size: var(--vi-vr-fuchsia);
   --icon-leading: 1;
   --motion-press: 100ms;
+  --motion-press-feedback: var(--motion-sheet);
+  --press-feedback-opacity: 0.12;
+  --press-feedback-radius: 50%;
+  --press-feedback-layer: 1;
+  --color-press-feedback: currentColor;
   --motion-screen: 120ms;
   --motion-method: 150ms;
   --motion-action: 140ms;
@@ -70,14 +92,14 @@
   --overlay: rgba(0, 0, 0, 0.6);
 }
 
-/* P: integer geometry for feedback corrections, not extracted source CSS. */
+/* Existing component geometry: scoped adaptation, U2026-11-02. */
 :root {
   --tile-width: 168px;
-  --tile-padding: 8px;
+  --tile-padding: var(--vi-vr-brown);
   --tile-photo-height: 152px;
-  --tile-radius: 12px;
-  --tile-action-height: 36px;
-  --tab-selected-border: 2px;
+  --tile-radius: var(--vi-radius-s);
+  --tile-action-height: var(--vi-vr-blue);
+  --tab-selected-border: var(--vi-vr-peal);
 }
 
 :root {
@@ -85,20 +107,20 @@
   --product-checkout-padding-block: var(--space-4);
 }
 
-/* Centralized existing colors/spacing: retained P values, not new visual tuning. */
+/* Existing component colors/spacing: scoped adaptation, U2026-11-02. */
 :root {
-  --color-system-text: #101314;
-  --color-card-outline: #f3f3f3;
-  --color-gallery-dot: #ddd;
-  --color-discount: #3caa3c;
-  --color-review-media: #333;
-  --color-comparison-background: #eaf5ff;
+  --color-system-text: var(--vi-color-gray-1100);
+  --color-card-outline: var(--vi-color-gray-100);
+  --color-gallery-dot: var(--vi-color-gray-300);
+  --color-discount: rgb(var(--vi-accent));
+  --color-review-media: var(--vi-color-gray-1000);
+  --color-comparison-background: rgb(var(--vi-info-light));
   --color-transparent: transparent;
   --color-map-canvas: #fbfaf3;
-  --color-store-text: #484848;
-  --color-store-note: #999;
-  --color-date-disabled: #aaa;
-  --color-date-rule: #888;
+  --color-store-text: var(--vi-color-gray-900);
+  --color-store-note: rgb(var(--vi-text-secondary));
+  --color-date-disabled: var(--vi-color-gray-500);
+  --color-date-rule: var(--vi-color-gray-700);
   /* Keep zero a length so standalone height calculations remain valid. */
   --space-zero: 0px;
   --layout-html-margin: var(--space-zero);
@@ -107,16 +129,16 @@
   --layout-status-bar-padding: var(--space-zero) var(--space-9);
   --space-px-3: 3px;
   --layout-status-bar-div-gap: var(--space-2);
-  --status-icon-size: 20px;
-  --space-px-10: 10px;
-  --layout-app-header-padding: var(--space-zero) var(--space-px-10);
+  --status-icon-size: var(--vi-vr-red);
+  --space-px-10: var(--vi-vr-ocher);
+  --layout-app-header-padding: var(--space-zero) var(--space-4);
   --layout-app-header-gap: var(--space-4);
-  --layout-route-product-app-header-padding: var(--space-zero) var(--space-4);
+  --layout-route-product-app-header-padding: var(--layout-app-header-padding);
   --space-px-1: 1px;
   --layout-route-product-app-header-gap: var(--space-px-1);
   --layout-route-product-app-header-icon-button-padding: var(--space-3);
   --layout-search-trigger-gap: var(--space-4);
-  --layout-search-trigger-padding: var(--space-px-10) var(--space-4);
+  --layout-search-trigger-padding: var(--space-px-10) var(--header-search-icon-inset);
   --layout-checkout-page-padding-bottom: var(--space-px-1);
   --layout-order-footer-padding: var(--space-5) var(--space-7) var(--space-6);
   --layout-order-footer-hr-margin: var(--space-5) var(--space-zero);
@@ -124,7 +146,7 @@
   --layout-shipping-unknown-margin: var(--space-zero);
   --space-px-14: 14px;
   --layout-cart-footer-padding-top: var(--space-px-14);
-  --space-px-20: 20px;
+  --space-px-20: var(--vi-vr-red);
   --layout-cart-footer-footer-total-margin-bottom: var(--space-px-20);
   --layout-cart-footer-footer-total-gap: var(--space-4);
   --layout-cart-footer-footer-total-old-price-margin-left: auto;
@@ -148,7 +170,7 @@
   --layout-empty-cart-copy-gap: var(--space-5);
   --layout-after-empty-cart-icon-title-gap: var(--space-6);
   --layout-after-empty-cart-title-button-gap: var(--space-8);
-  --space-px-80: 80px;
+  --space-px-80: var(--vi-vr-jade);
   --layout-empty-cart-padding: var(--space-px-80) var(--space-zero);
   --space-px-42: 42px;
   --layout-promo-padding-top: var(--space-px-42);
@@ -160,6 +182,7 @@
   --layout-section-heading-padding: var(--space-zero);
   --layout-section-heading-margin-bottom: var(--space-px-14);
   --layout-section-heading-gap: var(--space-px-10);
+  --layout-section-chevron-margin-left: auto;
   --layout-recommendation-track-gap: var(--space-5);
   --space-px-5: 5px;
   --layout-recommendation-track-padding: var(--space-1) var(--space-1) var(--space-px-5);
@@ -385,7 +408,6 @@
   --layout-switch-row-input-right: var(--space-zero);
   --layout-switch-track-after-left: var(--space-px-3);
   --layout-switch-track-after-top: var(--space-px-3);
-  --layout-stepper-icon-button-padding: var(--space-px-5);
   --layout-tabs-padding: var(--space-px-3);
   --layout-tabs-button-padding: var(--space-px-5) var(--space-4);
   --layout-row-gap: var(--space-4);
@@ -438,13 +460,13 @@
 
 /* U: icon field / default drawing pairs. Hit targets belong to Button. */
 :root {
-  --icon-field-16: 16px;
-  --icon-field-20: 20px;
-  --icon-field-24: 24px;
-  --icon-field-32: 32px;
-  --icon-field-40: 40px;
+  --icon-field-16: var(--vi-vr-pink);
+  --icon-field-20: var(--vi-vr-red);
+  --icon-field-24: var(--vi-vr-fuchsia);
+  --icon-field-32: var(--vi-vr-purple);
+  --icon-field-40: var(--vi-vr-sapphire);
   --icon-field-48: 48px;
-  --icon-drawing-12: 12px;
+  --icon-drawing-12: var(--vi-vr-orange);
   --icon-drawing-16: var(--icon-field-16);
   --icon-drawing-20: var(--icon-field-20);
   --icon-drawing-24: var(--icon-field-24);
@@ -457,6 +479,10 @@
   --icon-default-drawing-32: var(--icon-drawing-24);
   --icon-default-drawing-40: var(--icon-drawing-32);
   --icon-default-drawing-48: var(--icon-drawing-40);
+  --icon-button-size: var(--icon-field-40);
+  --icon-button-panel-size: var(--space-px-44);
+  --icon-info-step: var(--vi-vr-peal);
+  --icon-info-unit: 1em;
 }
 
 /* Shared product tile geometry. Sections supply data, never layout overrides. */
@@ -465,36 +491,36 @@
   --tile-name-height: calc(3 * var(--text-small-leading));
   --cart-product-name-height: calc(3 * var(--text-body-leading));
   --cart-product-name-height-after: calc(2 * var(--text-body-leading));
-  --cart-product-details-gap: var(--space-2);
-  --control-size-compact: 32px;
-  --stepper-compact-button-width: 36px;
-  --stepper-compact-width: calc(2 * var(--stepper-compact-button-width) + var(--control-size-compact));
-  --stepper-compact-minus-padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
-  --stepper-compact-plus-padding: var(--space-4) var(--space-5) var(--space-4) var(--space-4);
+  --cart-product-details-gap: var(--space-3);
+  --control-size-compact: var(--vi-vr-blue);
+  --stepper-height: var(--control-size-compact);
+  --stepper-purchase-value-width: var(--space-px-60);
+  --stepper-button-width: var(--vi-vr-blue);
+  --stepper-width: calc(2 * var(--stepper-button-width) + var(--control-size-compact));
+  --stepper-minus-padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+  --stepper-plus-padding: var(--space-4) var(--space-5) var(--space-4) var(--space-4);
   --cart-tile-name-height: calc(2 * var(--text-body-leading));
-  --tile-stepper-padding-inline: var(--space-1);
   --cart-selection-padding-block: var(--space-5);
-  --color-product-buy-hint: #f5c2c2;
-  --tile-deal-height: 24px;
-  --tile-stepper-control-size: 32px;
+  --color-product-buy-hint: rgb(var(--vi-primary-light));
+  --tile-deal-height: var(--vi-vr-fuchsia);
   --cart-tile-width: 318px;
   --cart-tile-photo-width: 42px;
   --cart-tile-photo-height: 52px;
   --cart-tile-min-height: 130px;
-  --cart-tile-action-width: 96px;
+  --cart-tile-action-width: var(--stepper-width);
   --cart-tile-add-width: var(--cart-tile-action-height);
-  --cart-tile-action-height: 44px;
+  --cart-tile-action-height: var(--vi-vr-mint);
 }
 
 /* COMMON: sheet source structure; no illustration, shared by Before and After. */
 :root {
   --sheet-handle-height: 28px;
-  --sheet-handle-width: 32px;
-  --sheet-handle-thickness: 4px;
+  --sheet-handle-width: var(--vi-vr-purple);
+  --sheet-handle-thickness: var(--vi-vr-yellow);
   --sheet-date-min-height: 346px;
   --sheet-heading-content-gap: var(--space-4);
   --sheet-heading-top-gap: var(--space-2);
-  --surface-close-size: var(--icon-field-40);
+  --surface-close-size: var(--icon-button-size);
   --sheet-header-padding: var(--space-zero) var(--space-9) var(--sheet-heading-content-gap) var(--space-zero);
   --sheet-content-padding: var(--space-zero) var(--space-px-1) var(--space-2);
   --sheet-subheading-padding: var(--space-zero) var(--space-px-1) var(--space-4);
@@ -508,7 +534,7 @@
   --order-thumb-tag-left: 50%;
   --after-payment-height: 70px;
   --after-cart-photo-size: 70px;
-  --comparison-control-height: 36px;
+  --comparison-control-height: var(--vi-vr-blue);
 }
 
 
@@ -526,7 +552,7 @@
   --map-address-x: 50%;
   --map-address-y: 50%;
   --after-map-camera-bottom: 180px;
-  --after-map-camera-padding: 80px;
+  --after-map-camera-padding: var(--vi-vr-jade);
   --color-map-park: #e6f1d9;
   --color-map-river: #b8def1;
   --color-map-road: #ffcf86;
@@ -549,7 +575,7 @@
 
 :root { --sheet-embedded-max-height: 65%; }
 
-@media (max-height: 700px) { :root { --status-height: 36px; --header-height: 56px; } }
+@media (max-height: 700px) { :root { --status-height: var(--vi-vr-blue); --header-height: 56px; } }
 
 /* COMMON: preview switcher, separate from the product palette. */
 :root {
@@ -570,10 +596,9 @@
 
 
 /* COMMON: equal square action controls in the product header. */
-:root { --product-header-action-size: 36px; }
+:root { --product-header-action-size: var(--icon-button-size); }
 
 /* COMMON: one spacing step inside the product footer counter. */
-:root { --product-buy-stepper-padding-inline: var(--space-2); }
 
 /* COMMON: compact map header, receiving control and back/close action. */
 :root { --map-screen-heading-padding: var(--space-5) var(--space-px-10); }
@@ -586,11 +611,11 @@
   --pickup-list-collapsed-height: 244px;
   --pickup-list-expanded-height: calc(100% - var(--space-10));
   --pickup-list-heading-inset: var(--space-8);
-  --pickup-list-search-height: 44px;
-  --space-px-44: 44px;
+  --pickup-list-search-height: var(--vi-vr-mint);
+  --space-px-44: var(--vi-vr-mint);
 }
 
-:root { --pickup-list-locate-bottom: calc(var(--pickup-list-collapsed-height) + var(--space-8)); --pickup-store-marker-size: 32px; }
+:root { --pickup-list-locate-bottom: calc(var(--pickup-list-collapsed-height) + var(--space-8)); --pickup-store-marker-size: var(--vi-vr-purple); }
 
 :root { --pickup-store-marker-tail-bottom: calc(-1 * var(--space-2)); }
 
@@ -611,7 +636,8 @@
 
 /* COMMON: expanded product search and its code-scanning tile. */
 :root {
-  --header-search-height: var(--space-px-44);
+  --header-search-height: var(--icon-button-panel-size);
+  --header-search-icon-inset: var(--space-4);
   --header-search-results-top: 100%;
   --header-search-results-height: calc(100dvh - var(--status-height) - var(--header-height));
   --header-search-actions-width: calc(3 * var(--product-header-action-size) + 2 * var(--space-4));
@@ -622,7 +648,7 @@
 
 /* COMMON: payment reference U2026-10-30; authored vector color adaptations. */
 :root {
-  --color-payment-recommendation-bg: #ebf7eb;
+  --color-payment-recommendation-bg: rgb(var(--vi-success-light));
   --color-payment-parts: #7065ef;
   --color-payment-split: #22c75a;
   --color-payment-split-accent: #f34e4c;
@@ -634,3 +660,37 @@
   --color-payment-sbp-lime: #75b843;
   --color-payment-sbp-red: #d72931;
 }
+:root {/* Existing geometry/opacity exceptions, U2026-11-02. Only the current component uses; see docs/design/components.md. Exact source-scale matches are referenced at use sites. */
+  --geometry-px-320: 320px;
+  --geometry-px-58: 58px;
+  --geometry-px-106: 106px;
+  --geometry-px-96: 96px;
+  --geometry-px-76: 76px;
+  --geometry-px-132: 132px;
+  --geometry-px-335: 335px;
+  --geometry-px-310: 310px;
+  --geometry-px-18: 18px;
+  --geometry-px-13: 13px;
+  --opacity-7: 0.7;
+  --geometry-px-100: 100px;
+  --geometry-px-54: 54px;
+  --geometry-px-136: 136px;
+  --geometry-px-48: 48px;
+  --geometry-px-70: 70px;
+  --geometry-px-85: 85px;
+  --geometry-px-115: 115px;
+  --opacity-4: 0.4;
+  --geometry-px-23: 23px;
+  --geometry-px-112: 112px;
+  --motion-spin: 800ms;
+  --geometry-px-400: 400px;
+  --geometry-px-900: 900px;
+  --geometry-px-230: 230px;
+  --opacity-35: .35;
+}
+
+/* Existing wide-browser composition: same formula, value owned by tokens. */
+@media (min-width: 768px) and (display-mode: browser) {
+  :root { --header-search-results-height: calc(100dvh - var(--space-10) * 2 - var(--status-height) - var(--header-height)); }
+}
+:root { --focus-offset-inset: calc(-1 * var(--vi-vr-peal)); --filter-press: brightness(0.93); --product-photo-transform: scale(1.13); }

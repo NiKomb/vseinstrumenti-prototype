@@ -1,4 +1,5 @@
-/* User-approved Inter scale. Website tokens and icon metrics remain separate. */
+/* Text values and current scoped exceptions: docs/design/typography.md.
+   Family and metrics have separate user decisions; latest snapshot U2026-11-02. */
 :root {
   --font-family: Inter, Arial, sans-serif;
   --type-tracking-default: normal;
@@ -8,8 +9,8 @@
   --text-title-weight: 400;
   --text-title: var(--text-title-weight) var(--text-title-size) /
     var(--text-title-leading) var(--font-family);
-  --text-heading-size: 20px;
-  --text-heading-leading: 24px;
+  --text-heading-size: var(--vi-vr-red);
+  --text-heading-leading: var(--vi-vr-fuchsia);
   --text-heading-weight: 400;
   --text-heading: var(--text-heading-weight) var(--text-heading-size) /
     var(--text-heading-leading) var(--font-family);
@@ -17,8 +18,8 @@
   --text-product-title-leading: 22px;
   --type-product-title: var(--text-heading-weight) var(--text-product-title-size) /
     var(--text-product-title-leading) var(--font-family);
-  --text-body-size: 16px;
-  --text-body-leading: 20px;
+  --text-body-size: var(--vi-font-size);
+  --text-body-leading: var(--vi-vr-red);
   --text-body-weight: 400;
   --text-body: var(--text-body-weight) var(--text-body-size) /
     var(--text-body-leading) var(--font-family);
@@ -45,12 +46,14 @@
   --type-title: var(--text-title);
   --type-price: var(--text-price);
   --type-button: var(--text-button);
-  --text-control-compact-leading: 16px;
+  --text-control-compact-leading: var(--text-body-leading);
   --text-control-compact-weight: 600;
-  --type-control-compact: var(--text-control-compact-weight) var(--text-small-size) /
+  --type-control-compact: var(--text-control-compact-weight) var(--text-body-size) /
     var(--text-control-compact-leading) var(--font-family);
+  --type-control-purchase: var(--text-control-compact-weight) var(--text-product-title-size) /
+    var(--text-product-title-leading) var(--font-family);
   --font-family-system: var(--font-family);
-  --type-system-status: 500 14px/20px var(--font-family-system);
+  --type-system-status: 500 14px/var(--vi-vr-red) var(--font-family-system);
   --text-heading-small-size: 18px;
   --type-heading-small: var(--text-heading-weight)
     var(--text-heading-small-size) / var(--text-heading-leading)
