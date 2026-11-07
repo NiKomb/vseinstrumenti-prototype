@@ -141,3 +141,100 @@
   --vi-vr-green:64px;
   --vi-vr-jade:80px;
 }
+
+/* Typography metrics extracted from website classes, without font-family.
+   Exact selectors and property provenance: references/upstream/manifest.json. */
+:root {
+  /* heading-v3: ._heading_5vy1f_8._v3_5vy1f_21 */
+  --vi-type-heading-v3-size: 24px;
+  --vi-type-heading-v3-leading: 28px;
+  --vi-type-heading-v3-weight: 700;
+  /* body-xl-tight: ._body-XL-tight_10oca_124 */
+  --vi-type-body-xl-tight-size: 20px;
+  --vi-type-body-xl-tight-leading: 24px;
+  --vi-type-body-xl-tight-weight: 400;
+  /* body-xlm-tight: ._body-XLm-tight_10oca_106 */
+  --vi-type-body-xlm-tight-size: 20px;
+  --vi-type-body-xlm-tight-leading: 24px;
+  --vi-type-body-xlm-tight-weight: 500;
+  /* text-v6: ._text_5vy1f_54._v6_5vy1f_36,._text_5vy1f_54._v7_5vy1f_41 */
+  --vi-type-text-v6-size: 18px;
+  --vi-type-text-v6-leading: 30px;
+  --vi-type-text-v6-weight: 400;
+  /* body-l-tight: ._body-L-tight_10oca_160 */
+  --vi-type-body-l-tight-size: 18px;
+  --vi-type-body-l-tight-leading: 24px;
+  --vi-type-body-l-tight-weight: 400;
+  /* body-m-tight: ._body-M-tight_10oca_196 */
+  --vi-type-body-m-tight-size: 16px;
+  --vi-type-body-m-tight-leading: 20px;
+  --vi-type-body-m-tight-weight: 400;
+  /* body-mm-tight: ._body-Mm-tight_10oca_178 */
+  --vi-type-body-mm-tight-size: 16px;
+  --vi-type-body-mm-tight-leading: 20px;
+  --vi-type-body-mm-tight-weight: 500;
+  /* body-s-wide: ._body-S-wide_10oca_223 */
+  --vi-type-body-s-wide-size: 14px;
+  --vi-type-body-s-wide-leading: 20px;
+  --vi-type-body-s-wide-weight: 400;
+  /* text-v3: ._text_5vy1f_54 */
+  --vi-type-text-v3-size: 14px;
+  --vi-type-text-v3-leading: 20px;
+  --vi-type-text-v3-weight: 300;
+  /* text-v1: ._text_5vy1f_54 */
+  --vi-type-text-v1-size: 14px;
+  --vi-type-text-v1-leading: 20px;
+  --vi-type-text-v1-weight: 500;
+  /* body-s-tight: ._body-S-tight_10oca_232 */
+  --vi-type-body-s-tight-size: 14px;
+  --vi-type-body-s-tight-leading: 16px;
+  --vi-type-body-s-tight-weight: 400;
+  /* body-sm-tight: ._body-Sm-tight_10oca_214 */
+  --vi-type-body-sm-tight-size: 14px;
+  --vi-type-body-sm-tight-leading: 16px;
+  --vi-type-body-sm-tight-weight: 500;
+  /* body-xs-tight: ._body-XS-tight_10oca_268 */
+  --vi-type-body-xs-tight-size: 13px;
+  --vi-type-body-xs-tight-leading: 16px;
+  --vi-type-body-xs-tight-weight: 400;
+  /* counter-medium: ._counter_dk73b_8._-medium_dk73b_47 ._counter-input_dk73b_66,._counter_dk73b_8._-medium_dk73b_47 ._counter-unit_dk73b_67 */
+  --vi-type-counter-medium-size: 16px;
+  --vi-type-counter-medium-leading: 20px;
+  --vi-type-counter-medium-weight: 600;
+  /* counter-large: ._counter_dk73b_8._-large_dk73b_53 ._counter-input_dk73b_66,._counter_dk73b_8._-large_dk73b_53 ._counter-unit_dk73b_67 */
+  --vi-type-counter-large-size: 18px;
+  --vi-type-counter-large-leading: 24px;
+  --vi-type-counter-large-weight: 600;
+}
+
+/* Spacing and required layout dependencies extracted from the saved website CSS.
+   Exact selectors, properties and literal components: upstream manifest.spacing_sources. */
+:root {
+  --vi-spacing-1: 1px;
+  --vi-spacing-3: 3px;
+  --vi-spacing-5: 5px;
+  --vi-spacing-7: 7px;
+  --vi-spacing-14: 14px;
+  --vi-spacing-15: 15px;
+  --vi-spacing-18: 18px;
+  --vi-spacing-22: 22px;
+  --vi-spacing-25: 25px;
+  --vi-spacing-26: 26px;
+  --vi-spacing-28: 28px;
+  --vi-spacing-30: 30px;
+  --vi-spacing-34: 34px;
+  --vi-spacing-38: 38px;
+  --vi-spacing-50: 50px;
+  --vi-spacing-56: 56px;
+  --vi-spacing-60: 60px;
+  --vi-spacing-62: 62px;
+  --vi-spacing-100: 100px;
+  --vi-spacing-190: 190px;
+  --vi-spacing-360: 360px;
+  --vi-spacing-zero: 0px;
+  --vi-spacing-auto: auto;
+  --vi-spacing-center: 50%;
+  --vi-spacing-full: 100%;
+  --vi-layout-viewport-width: 100vw;
+  --vi-layout-list-height: 244px;
+}

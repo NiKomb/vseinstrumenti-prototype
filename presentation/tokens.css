@@ -112,14 +112,14 @@
   --deck-context-pickup-screen-height: calc(var(--deck-context-triple-screen-width) * 889 / 400);
   --deck-conditions-width: calc((var(--deck-support-width) - var(--deck-gap)) / 2);
   --deck-mobile-radius: var(--space-8);
-  --deck-mobile-outline: var(--space-px-1);
+  --deck-mobile-outline: var(--geometry-px-1);
   --deck-mobile-shadow: 0 var(--vi-vr-pink) 48px #1c21261a;
   --deck-focus-stroke: var(--vi-vr-yellow);
   --deck-focus-arrow-width: 84px;
   --deck-focus-arrow-height: 84px;
   --deck-focus-head-width: 18px;
   --deck-focus-head-height: var(--vi-vr-red);
-  --deck-rule-width: var(--space-px-1);
+  --deck-rule-width: var(--geometry-px-1);
   --deck-signal-rule-width: 3px;
   --deck-ui-height: calc(var(--space-10) + var(--space-6));
   --deck-ui-button: var(--space-10);

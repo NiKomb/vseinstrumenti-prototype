@@ -1,63 +1,88 @@
-/* Text values and current scoped exceptions: docs/design/typography.md.
-   Family and metrics have separate user decisions; latest snapshot U2026-11-02. */
+/* COMMON: 15 roles approved in the typography-scale conversation.
+   Website metrics are extracted into foundation.css; Inter is the chosen family.
+   Contract: docs/design/typography.md. */
 :root {
   --font-family: Inter, Arial, sans-serif;
+  --font-family-system: var(--font-family);
   --type-tracking-default: normal;
-  --type-caption-tracking: -0.05em;
-  --text-title-size: 22px;
-  --text-title-leading: 26px;
-  --text-title-weight: 400;
+
+  --text-title-size: var(--text-heading-size);
+  --text-title-leading: var(--text-heading-leading);
+  --text-title-weight: var(--text-heading-weight);
   --text-title: var(--text-title-weight) var(--text-title-size) /
     var(--text-title-leading) var(--font-family);
-  --text-heading-size: var(--vi-vr-red);
-  --text-heading-leading: var(--vi-vr-fuchsia);
-  --text-heading-weight: 400;
+  --type-title: var(--text-title);
+
+  --text-heading-size: var(--vi-type-body-xl-tight-size);
+  --text-heading-leading: var(--vi-type-body-xl-tight-leading);
+  --text-heading-weight: var(--vi-type-body-xl-tight-weight);
   --text-heading: var(--text-heading-weight) var(--text-heading-size) /
     var(--text-heading-leading) var(--font-family);
-  --text-product-title-size: 18px;
-  --text-product-title-leading: 22px;
-  --type-product-title: var(--text-heading-weight) var(--text-product-title-size) /
+  --type-heading: var(--text-heading);
+  --text-heading-small-size: var(--vi-type-body-l-tight-size);
+  --type-heading-small: var(--vi-type-body-l-tight-weight)
+    var(--text-heading-small-size) / var(--vi-type-body-l-tight-leading)
+    var(--font-family);
+
+  --text-product-title-size: var(--vi-type-text-v6-size);
+  --text-product-title-leading: var(--vi-type-text-v6-leading);
+  --type-product-title: var(--vi-type-text-v6-weight) var(--text-product-title-size) /
     var(--text-product-title-leading) var(--font-family);
-  --text-body-size: var(--vi-font-size);
-  --text-body-leading: var(--vi-vr-red);
-  --text-body-weight: 400;
+
+  --text-body-size: var(--vi-type-body-m-tight-size);
+  --text-body-leading: var(--vi-type-body-m-tight-leading);
+  --text-body-weight: var(--vi-type-body-m-tight-weight);
   --text-body: var(--text-body-weight) var(--text-body-size) /
     var(--text-body-leading) var(--font-family);
-  --text-small-size: 14px;
-  --text-small-leading: 18px;
-  --text-small-weight: 400;
+  --type-body: var(--text-body);
+  --type-body-medium: var(--vi-type-body-mm-tight-weight)
+    var(--vi-type-body-mm-tight-size) / var(--vi-type-body-mm-tight-leading)
+    var(--font-family);
+
+  --text-small-size: var(--vi-type-body-s-wide-size);
+  --text-small-leading: var(--vi-type-body-s-wide-leading);
+  --text-small-weight: var(--vi-type-body-s-wide-weight);
   --text-small: var(--text-small-weight) var(--text-small-size) /
     var(--text-small-leading) var(--font-family);
-  --text-caption-size: 14px;
-  --text-caption-leading: 18px;
-  --text-caption-weight: 300;
+  --type-small: var(--text-small);
+
+  --text-caption-size: var(--vi-type-text-v3-size);
+  --text-caption-leading: var(--vi-type-text-v3-leading);
+  --text-caption-weight: var(--vi-type-text-v3-weight);
   --text-caption: var(--text-caption-weight) var(--text-caption-size) /
     var(--text-caption-leading) var(--font-family);
-  --text-price-size: 22px;
-  --text-price-leading: 26px;
-  --text-price-weight: 500;
+  --type-caption: var(--text-caption);
+
+  --text-price-size: var(--vi-type-body-xlm-tight-size);
+  --text-price-leading: var(--vi-type-body-xlm-tight-leading);
+  --text-price-weight: var(--vi-type-body-xlm-tight-weight);
   --text-price: var(--text-price-weight) var(--text-price-size) /
     var(--text-price-leading) var(--font-family);
-  --text-button: var(--text-small);
-  --type-caption: var(--text-caption);
-  --type-small: var(--text-small);
-  --type-body: var(--text-body);
-  --type-heading: var(--text-heading);
-  --type-title: var(--text-title);
   --type-price: var(--text-price);
+
+  --text-button-leading: var(--vi-type-body-s-tight-leading);
+  --text-button: var(--vi-type-body-s-tight-weight)
+    var(--vi-type-body-s-tight-size) / var(--text-button-leading) var(--font-family);
   --type-button: var(--text-button);
-  --text-control-compact-leading: var(--text-body-leading);
-  --text-control-compact-weight: 600;
-  --type-control-compact: var(--text-control-compact-weight) var(--text-body-size) /
-    var(--text-control-compact-leading) var(--font-family);
-  --type-control-purchase: var(--text-control-compact-weight) var(--text-product-title-size) /
-    var(--text-product-title-leading) var(--font-family);
-  --font-family-system: var(--font-family);
-  --type-system-status: 500 14px/var(--vi-vr-red) var(--font-family-system);
-  --text-heading-small-size: 18px;
-  --type-heading-small: var(--text-heading-weight)
-    var(--text-heading-small-size) / var(--text-heading-leading)
+  --type-button-medium: var(--vi-type-body-sm-tight-weight)
+    var(--vi-type-body-sm-tight-size) / var(--vi-type-body-sm-tight-leading)
     var(--font-family);
+
+  --text-label-leading: var(--vi-type-body-xs-tight-leading);
+  --type-label: var(--vi-type-body-xs-tight-weight)
+    var(--vi-type-body-xs-tight-size) / var(--text-label-leading) var(--font-family);
+
+  --text-control-compact-leading: var(--vi-type-counter-medium-leading);
+  --text-control-compact-weight: var(--vi-type-counter-medium-weight);
+  --type-control-compact: var(--text-control-compact-weight)
+    var(--vi-type-counter-medium-size) / var(--text-control-compact-leading)
+    var(--font-family);
+  --type-control-purchase: var(--vi-type-counter-large-weight)
+    var(--vi-type-counter-large-size) / var(--vi-type-counter-large-leading)
+    var(--font-family);
+  --type-system-status: var(--vi-type-text-v1-weight)
+    var(--vi-type-text-v1-size) / var(--vi-type-text-v1-leading)
+    var(--font-family-system);
 }
 @font-face {
   font-family: Inter;

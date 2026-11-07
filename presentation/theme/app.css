@@ -1,5 +1,5 @@
-/* COMMON. Values inherit the extracted website primitives. Existing scoped
-   adaptations approved by U2026-11-02: docs/design/components.md and motion.md. */
+/* COMMON. Website spacing inheritance: docs/design/spacing.md.
+   Other scoped adaptations: docs/design/components.md and motion.md. */
 :root {
   /* COMMON catalog: reference proportions, existing prototype scale. */
   --catalog-category-width: 116px;
@@ -8,7 +8,7 @@
   --catalog-product-photo-size: 112px;
   --catalog-product-action-width: 112px;
   --catalog-product-gap: var(--space-9);
-  --catalog-products-top-inset: var(--space-8);
+  --catalog-products-top-inset: var(--space-6);
   --catalog-no-results-top-inset: calc(var(--space-8) + var(--space-8));
   --empty-collection-illustration-width: 112px;
   --empty-collection-illustration-height: var(--empty-collection-illustration-width);
@@ -43,18 +43,19 @@
   --space-4: var(--vi-vr-brown);
   --space-5: var(--vi-vr-orange);
   --space-6: var(--vi-vr-pink);
-  --space-7: 18px;
+  --space-7: var(--vi-spacing-18);
   --space-8: var(--vi-vr-fuchsia);
   --space-9: var(--vi-vr-purple);
   --space-10: var(--vi-vr-sapphire);
   --radius-sm: var(--vi-radius-xs);
   --radius-input: var(--vi-radius-s);
   --radius-button: var(--vi-radius-s);
+  --radius-payment-selected: var(--vi-radius-m);
   --radius-card: var(--vi-radius-l);
   --radius-prototype-screen: var(--vi-radius-3xl);
   --radius-bottom-panel: var(--vi-radius-l);
   --layout-panel-underlay-margin-bottom: calc(-1 * var(--radius-bottom-panel));
-  --layout-heading-close-margin: auto;
+  --layout-heading-close-margin: var(--vi-spacing-auto);
   --destination-menu-width: 176px;
   --layout-after-header-scroll-overlap: calc(-1 * var(--radius-card));
   --layout-after-checkout-top-inset: calc(var(--radius-card) + var(--space-5));
@@ -65,7 +66,7 @@
   --shadow-footer: 0 -4px var(--vi-vr-red) #2026290d;
   --shadow-phone: 0 var(--vi-vr-brown) var(--vi-vr-green) #0002;
   --phone-width: 400px;
-  --status-height: 42px;
+  --status-height: var(--vi-vr-mint);
   --header-height: var(--vi-vr-green);
   --checkout-header-bottom-trim: var(--space-2);
   --control-height: 48px;
@@ -103,11 +104,11 @@
 }
 
 :root {
-  --product-checkout-height: calc(var(--text-small-leading) + var(--text-caption-leading) + var(--space-1) + 2 * var(--product-checkout-padding-block));
+  --product-checkout-height: calc(var(--text-button-leading) + var(--text-label-leading) + var(--space-1) + 2 * var(--product-checkout-padding-block));
   --product-checkout-padding-block: var(--space-4);
 }
 
-/* Existing component colors/spacing: scoped adaptation, U2026-11-02. */
+/* Component colors: scoped adaptation. Spacing inherits website definitions. */
 :root {
   --color-system-text: var(--vi-color-gray-1100);
   --color-card-outline: var(--vi-color-gray-100);
@@ -122,41 +123,40 @@
   --color-date-disabled: var(--vi-color-gray-500);
   --color-date-rule: var(--vi-color-gray-700);
   /* Keep zero a length so standalone height calculations remain valid. */
-  --space-zero: 0px;
+  --space-zero: var(--vi-spacing-zero);
   --layout-html-margin: var(--space-zero);
-  --layout-phone-margin: auto;
-  --space-px-59: 59px;
+  --layout-phone-margin: var(--vi-spacing-auto);
   --layout-status-bar-padding: var(--space-zero) var(--space-9);
-  --space-px-3: 3px;
+  --space-px-3: var(--vi-spacing-3);
   --layout-status-bar-div-gap: var(--space-2);
   --status-icon-size: var(--vi-vr-red);
   --space-px-10: var(--vi-vr-ocher);
   --layout-app-header-padding: var(--space-zero) var(--space-4);
   --layout-app-header-gap: var(--space-4);
   --layout-route-product-app-header-padding: var(--layout-app-header-padding);
-  --space-px-1: 1px;
-  --layout-route-product-app-header-gap: var(--space-px-1);
+  --geometry-px-1: var(--vi-spacing-1);
+  --layout-route-product-app-header-gap: var(--space-1);
   --layout-route-product-app-header-icon-button-padding: var(--space-3);
   --layout-search-trigger-gap: var(--space-4);
   --layout-search-trigger-padding: var(--space-px-10) var(--header-search-icon-inset);
-  --layout-checkout-page-padding-bottom: var(--space-px-1);
+  --layout-checkout-page-padding-bottom: var(--space-1);
   --layout-order-footer-padding: var(--space-5) var(--space-7) var(--space-6);
   --layout-order-footer-hr-margin: var(--space-5) var(--space-zero);
   --layout-footer-action-gap: var(--space-6);
   --layout-shipping-unknown-margin: var(--space-zero);
-  --space-px-14: 14px;
+  --space-px-14: var(--vi-spacing-14);
   --layout-cart-footer-padding-top: var(--space-px-14);
   --space-px-20: var(--vi-vr-red);
   --layout-cart-footer-footer-total-margin-bottom: var(--space-px-20);
   --layout-cart-footer-footer-total-gap: var(--space-4);
-  --layout-cart-footer-footer-total-old-price-margin-left: auto;
+  --layout-cart-footer-footer-total-old-price-margin-left: var(--vi-spacing-auto);
   --layout-cart-page-padding: var(--space-zero) var(--space-7) var(--space-7);
   --layout-cart-selection-gap: var(--space-3);
   --layout-cart-selection-margin-bottom: var(--space-5);
   --layout-cart-selection-button-padding: var(--space-zero);
   --layout-cart-number-margin-bottom: var(--space-5);
   --layout-cart-product-gap: var(--space-6);
-  --space-px-30: 30px;
+  --space-px-30: var(--vi-spacing-30);
   --layout-cart-product-margin-bottom: var(--space-px-30);
   --layout-cart-picture-button-padding: var(--space-zero);
   --layout-cart-picture-checkbox-margin-top: var(--space-2);
@@ -172,9 +172,8 @@
   --layout-after-empty-cart-title-button-gap: var(--space-8);
   --space-px-80: var(--vi-vr-jade);
   --layout-empty-cart-padding: var(--space-px-80) var(--space-zero);
-  --space-px-42: 42px;
-  --layout-promo-padding-top: var(--space-px-42);
-  --space-px-22: 22px;
+  --layout-promo-padding-top: var(--space-px-44);
+  --space-px-22: var(--vi-spacing-22);
   --layout-promo-padding-bottom: var(--space-px-22);
   --layout-promo-h2-gap: var(--space-5);
   --layout-promo-h2-margin-bottom: var(--space-6);
@@ -182,9 +181,9 @@
   --layout-section-heading-padding: var(--space-zero);
   --layout-section-heading-margin-bottom: var(--space-px-14);
   --layout-section-heading-gap: var(--space-px-10);
-  --layout-section-chevron-margin-left: auto;
+  --layout-section-chevron-margin-left: var(--vi-spacing-auto);
   --layout-recommendation-track-gap: var(--space-5);
-  --space-px-5: 5px;
+  --space-px-5: var(--vi-spacing-5);
   --layout-recommendation-track-padding: var(--space-1) var(--space-1) var(--space-px-5);
   --layout-recommendation-gap: var(--space-5);
   --layout-recommendation-padding: var(--space-7);
@@ -195,7 +194,7 @@
   --layout-gallery-margin-bottom: var(--space-px-14);
   --layout-main-photo-padding: var(--space-px-20) var(--space-7) var(--space-zero);
   --layout-gallery-actions-left: var(--space-7);
-  --space-px-28: 28px;
+  --space-px-28: var(--vi-spacing-28);
   --layout-gallery-actions-bottom: var(--space-px-28);
   --layout-gallery-actions-gap: var(--space-5);
   --layout-gallery-dots-gap: var(--space-px-5);
@@ -215,9 +214,8 @@
   --layout-power-chips-gap: var(--space-4);
   --layout-power-chips-margin: var(--space-zero) calc(-1 * var(--space-7)) var(--space-px-28);
   --layout-power-chips-button-padding: var(--space-4) var(--space-5);
-  --space-px-7: 7px;
-  --space-px-11: 11px;
-  --layout-power-chips-selected-padding: var(--space-px-7) var(--space-px-11);
+  --space-px-7: var(--vi-spacing-7);
+  --layout-power-chips-selected-padding: var(--space-px-7) var(--space-5);
   --layout-purchase-card-padding: var(--space-6);
   --layout-discount-padding: var(--space-1) var(--space-3);
   --layout-discount-margin-left: var(--space-4);
@@ -227,27 +225,27 @@
   --layout-guarantee-margin-top: var(--space-px-14);
   --layout-guarantee-gap: var(--space-4);
   --layout-guarantee-padding: var(--space-px-10);
-  --layout-guarantee-icon-last-child-margin-left: auto;
+  --layout-guarantee-icon-last-child-margin-left: var(--vi-spacing-auto);
   --layout-product-buy-gap: var(--space-5);
   --layout-product-buy-padding: var(--space-4) var(--space-7);
   --layout-bottom-nav-padding-top: var(--space-px-3);
   --layout-bottom-nav-button-gap: var(--space-1);
   --layout-bottom-nav-button-padding: var(--space-zero);
   --layout-bottom-nav-b-right: calc(-1 * var(--space-3));
-  --layout-bottom-nav-b-top: calc(-1 * var(--space-px-1));
+  --layout-bottom-nav-b-top: calc(-1 * var(--space-1));
   --layout-specs-div-padding: var(--space-5) var(--space-zero);
-  --space-px-15: 15px;
+  --space-px-15: var(--vi-spacing-15);
   --layout-specs-div-gap: var(--space-px-15);
   --layout-specs-dd-margin: var(--space-zero);
   --layout-spec-expand-padding: var(--space-2) var(--space-zero);
   --layout-description-copy-padding-top: var(--space-px-20);
   --layout-reviews-rating-padding: var(--space-6) var(--space-zero);
   --layout-reviews-rating-gap: var(--space-4);
-  --layout-reviews-rating-icon-margin-left: auto;
+  --layout-reviews-rating-icon-margin-left: var(--vi-spacing-auto);
   --layout-review-media-gap: var(--space-4);
   --layout-review-media-margin-bottom: var(--space-6);
   --layout-review-media-button-padding: var(--space-zero);
-  --layout-review-media-icon-left: calc(50% - var(--space-px-10));
+  --layout-review-media-icon-left: calc(var(--vi-spacing-center) - var(--space-px-10));
   --layout-review-media-icon-top: var(--space-px-22);
   --layout-review-card-padding: var(--space-5);
   --layout-review-card-margin-bottom: var(--space-px-10);
@@ -269,7 +267,7 @@
   --layout-checkout-details-divider-margin: var(--space-px-10) var(--space-zero) var(--space-px-20);
   --layout-method-track-gap: var(--space-px-10);
   --layout-method-track-margin: var(--space-px-14) calc(-1 * var(--space-7)) var(--space-zero);
-  --layout-method-track-padding: var(--space-zero) var(--space-7) var(--space-px-1);
+  --layout-method-track-padding: var(--space-zero) var(--space-7) var(--space-1);
   --layout-method-padding: var(--space-5);
   --delivery-method-height: 86px;
   --layout-method-track-divider-margin: var(--space-7) var(--space-zero) var(--space-zero);
@@ -306,8 +304,7 @@
   --layout-payment-row-gap: var(--space-px-10);
   --layout-payment-row-padding: var(--space-px-14) var(--space-5);
   --layout-payments-info-box-padding: var(--space-4);
-  --space-px-9: 9px;
-  --layout-payments-info-box-gap: var(--space-px-9);
+  --layout-payments-info-box-gap: var(--space-px-10);
   --layout-payments-info-box-icon-padding: var(--space-5);
   --layout-comment-textarea-padding: var(--space-5);
   --layout-carrier-notice-margin: var(--space-px-10) var(--space-zero) var(--space-px-14);
@@ -317,21 +314,20 @@
   --layout-route-map-app-header-top: var(--status-height);
   --layout-route-map-app-header-left: var(--space-zero);
   --layout-route-map-app-header-right: var(--space-zero);
-  --layout-static-map-inset: var(--space-zero) var(--space-zero) 30%;
+  --layout-static-map-inset: var(--space-zero) var(--space-zero) var(--vi-spacing-center);
   --layout-static-map-padding: var(--space-zero);
   --layout-map-page-icon-button-right: var(--space-7);
-  --space-px-330: 330px;
-  --layout-map-page-icon-button-bottom: var(--space-px-330);
+  --layout-map-page-icon-button-bottom: var(--space-px-360);
   --layout-map-point-bottom: var(--space-zero);
   --layout-map-point-left: var(--space-zero);
   --layout-map-point-right: var(--space-zero);
-  --space-px-50: 50px;
-  --space-px-34: 34px;
+  --space-px-50: var(--vi-spacing-50);
+  --space-px-34: var(--vi-spacing-34);
   --layout-map-point-padding: var(--space-px-50) var(--space-7) var(--space-px-34);
   --layout-map-point-icon-button-right: var(--space-1);
   --layout-map-point-icon-button-top: var(--space-3);
   --layout-map-handle-top: var(--space-px-10);
-  --layout-map-handle-left: calc(50% - var(--space-7));
+  --layout-map-handle-left: calc(var(--vi-spacing-center) - var(--space-7));
   --layout-map-point-h2-margin-bottom: var(--space-5);
   --layout-map-point-p-margin-bottom: var(--space-px-14);
   --layout-map-actions-gap: var(--space-4);
@@ -358,7 +354,7 @@
   --layout-order-footer-padding-top: var(--space-4);
   --layout-order-footer-padding-bottom: var(--space-px-10);
   --layout-order-footer-hr-margin-variant-2: var(--space-4) var(--space-zero);
-  --space-px-38: 38px;
+  --space-px-38: var(--vi-spacing-38);
   --layout-map-point-padding-top: var(--space-px-38);
   --layout-map-point-padding-bottom: var(--space-6);
   --layout-map-actions-margin-variant-2: var(--space-6) var(--space-zero);
@@ -375,16 +371,15 @@
   --layout-address-button-padding-variant-2: var(--space-px-5) var(--space-5);
   --layout-recommendation-name-margin-bottom-variant-2: var(--space-5);
   --layout-power-chips-button-padding-variant-2: var(--space-px-7) var(--space-5);
-  --layout-power-chips-selected-padding-variant-2: var(--space-3) var(--space-px-11);
+  --layout-power-chips-selected-padding-variant-2: var(--space-3) var(--space-5);
   --layout-method-track-divider-margin-variant-2: var(--space-6) var(--space-zero) var(--space-zero);
-  --space-px-21: 21px;
-  --layout-checkout-details-row-padding-variant-3: var(--space-px-21) var(--space-zero) var(--space-px-14);
+  --layout-checkout-details-row-padding-variant-3: var(--space-px-22) var(--space-zero) var(--space-px-14);
   --layout-checkout-details-padding-bottom-variant-2: var(--space-px-10);
   --layout-checkout-page-card-margin-bottom: var(--space-px-10);
   --layout-power-chips-margin-left: var(--space-zero);
   --layout-power-chips-margin-right: var(--space-zero);
   --layout-product-page-tabs-padding: var(--space-zero);
-  --layout-product-page-tabs-button-padding: var(--space-px-9) var(--space-4);
+  --layout-product-page-tabs-button-padding: var(--space-px-10) var(--space-4);
   --layout-recommendation-track-padding-bottom: var(--space-3);
   --layout-recommendation-favorite-right: var(--space-2);
   --layout-recommendation-favorite-top: var(--space-2);
@@ -393,13 +388,13 @@
   --layout-recommendation-deal-gap: var(--space-4);
   --layout-recommendation-deal-discount-padding: var(--space-1) var(--space-3);
   --layout-vertical-cards-recommendation-name-margin-bottom: var(--space-4);
-  --layout-vertical-cards-recommendation-bottom-margin-top: auto;
+  --layout-vertical-cards-recommendation-bottom-margin-top: var(--vi-spacing-auto);
   --layout-vertical-cards-recommendation-bottom-gap: var(--space-5);
   --layout-bottom-nav-b-padding-inline: var(--space-1);
   --layout-h1-margin: var(--space-zero);
   --layout-p-margin: var(--space-zero) var(--space-zero) var(--space-6);
   --layout-sr-only-padding: var(--space-zero);
-  --layout-sr-only-margin: calc(-1 * var(--space-px-1));
+  --layout-sr-only-margin: calc(-1 * var(--space-1));
   --layout-icon-button-padding: var(--space-4);
   --layout-button-padding: var(--space-5) var(--space-6);
   --layout-radio-margin: var(--space-zero);
@@ -417,21 +412,21 @@
   --layout-sheet-padding: var(--space-zero) var(--space-7) var(--space-7);
   --layout-sheet-icon-button-right: var(--space-2);
   --layout-sheet-icon-button-top: var(--space-px-10);
-  --layout-drag-handle-padding-top: var(--space-px-9);
-  --space-px-25: 25px;
+  --layout-drag-handle-padding-top: var(--space-px-10);
+  --space-px-25: var(--vi-spacing-25);
   --layout-sheet-h2-padding: var(--space-px-10) var(--space-px-25) var(--space-8) var(--space-zero);
-  --layout-sheet-content-padding: var(--space-zero) var(--space-px-1) var(--space-2);
+  --layout-sheet-content-padding: var(--space-zero) var(--space-1) var(--space-2);
   --layout-sheet-content-field-margin-bottom: var(--space-px-14);
   --layout-sheet-actions-gap: var(--space-5);
   --layout-sheet-actions-padding-top: var(--space-6);
   --layout-sheet-actions-bottom: var(--space-zero);
   --layout-date-sheet-padding: var(--space-zero) var(--space-px-28) var(--space-px-20);
   --layout-date-sheet-h2-padding: var(--space-px-22) var(--space-zero);
-  --space-px-26: 26px;
+  --space-px-26: var(--vi-spacing-26);
   --layout-date-wheel-gap-variant-2: var(--space-px-26);
-  --space-px-62: 62px;
+  --space-px-62: var(--vi-spacing-62);
   --layout-date-wheel-margin: var(--space-px-62) var(--space-px-10) var(--space-px-20);
-  --space-px-56: 56px;
+  --space-px-56: var(--vi-spacing-56);
   --layout-date-column-padding-bottom: var(--space-px-56);
   --layout-text-link-padding: var(--space-zero);
   --layout-divider-margin: var(--space-px-20) var(--space-zero);
@@ -445,7 +440,8 @@
   --layout-long-copy-ul-padding-left: var(--space-px-20);
   --layout-long-copy-ul-margin: var(--space-8) var(--space-zero);
   --layout-long-copy-li-margin-bottom: var(--space-8);
-  --space-px-60: 60px;
+  --space-px-60: var(--vi-spacing-60);
+  --space-px-360: var(--vi-spacing-360);
   --layout-long-copy-subsection-margin-top: var(--space-px-60);
 }
 
@@ -522,8 +518,8 @@
   --sheet-heading-top-gap: var(--space-2);
   --surface-close-size: var(--icon-button-size);
   --sheet-header-padding: var(--space-zero) var(--space-9) var(--sheet-heading-content-gap) var(--space-zero);
-  --sheet-content-padding: var(--space-zero) var(--space-px-1) var(--space-2);
-  --sheet-subheading-padding: var(--space-zero) var(--space-px-1) var(--space-4);
+  --sheet-content-padding: var(--space-zero) var(--space-1) var(--space-2);
+  --sheet-subheading-padding: var(--space-zero) var(--space-1) var(--space-4);
   --sheet-footer-gap: var(--space-5);
   --sheet-footer-padding: var(--space-6) var(--space-zero) var(--space-zero);
 }
@@ -531,7 +527,7 @@
 /* AFTER: version-specific containers; shared controls remain common. */
 :root {
   --after-thumb-size: 56px;
-  --order-thumb-tag-left: 50%;
+  --order-thumb-tag-left: var(--vi-spacing-center);
   --after-payment-height: 70px;
   --after-cart-photo-size: 70px;
   --comparison-control-height: var(--vi-vr-blue);
@@ -545,13 +541,13 @@
   --layout-map-chrome-height: calc(var(--status-height) + var(--header-height));
   --after-map-image-filter: url(#after-map-sharpen) contrast(1.02);
   --after-map-image-rendering: -webkit-optimize-contrast;
-  --map-pan-limit: 100px;
+  --map-pan-limit: var(--vi-spacing-100);
   --map-plane-inset: calc(-1 * var(--map-pan-limit));
   --delivery-map-height: 46dvh;
   --delivery-map-min-height: 220px;
-  --map-address-x: 50%;
-  --map-address-y: 50%;
-  --after-map-camera-bottom: 180px;
+  --map-address-x: var(--vi-spacing-center);
+  --map-address-y: var(--vi-spacing-center);
+  --after-map-camera-bottom: var(--vi-spacing-190);
   --after-map-camera-padding: var(--vi-vr-jade);
   --color-map-park: #e6f1d9;
   --color-map-river: #b8def1;
@@ -565,17 +561,17 @@
   /* Two spacing steps down from compact (12/18 -> 6/12). */
   --button-tight-padding-block: var(--space-3);
   --button-tight-padding-inline: var(--space-5);
-  --button-tight-height: calc(var(--text-small-leading) + 2 * var(--button-tight-padding-block));
+  --button-tight-height: calc(var(--text-button-leading) + 2 * var(--button-tight-padding-block));
 }
 
-:root { --map-point-max-height: 65%; --map-center-control-bottom: 45%; }
+:root { --map-point-max-height: 65%; --map-center-control-bottom: var(--vi-spacing-center); }
 
 /* COMMON: frame shared by both payment lists. */
 :root { --payment-methods-frame-width: var(--space-2); --payment-method-height: 60px; }
 
 :root { --sheet-embedded-max-height: 65%; }
 
-@media (max-height: 700px) { :root { --status-height: var(--vi-vr-blue); --header-height: 56px; } }
+@media (max-height: 700px) { :root { --status-height: var(--vi-vr-blue); --header-height: var(--space-px-56); } }
 
 /* COMMON: preview switcher, separate from the product palette. */
 :root {
@@ -588,10 +584,10 @@
   --variant-panel-inset: var(--space-px-3);
   --variant-panel-width: calc(3 * var(--variant-control-height) + 2 * var(--variant-panel-inset) + 2 * var(--space-1));
   --variant-panel-top: var(--space-5);
-  --variant-panel-left: auto;
+  --variant-panel-left: var(--vi-spacing-auto);
   --variant-panel-edge-gap: var(--space-4);
   --variant-control-height: var(--icon-field-40);
-  --variant-panel-right: calc((100vw - var(--variant-panel-width)) / 2);
+  --variant-panel-right: calc((var(--vi-layout-viewport-width) - var(--variant-panel-width)) / 2);
 }
 
 
@@ -608,7 +604,7 @@
 
 /* COMMON: map list proportions from user references, 1080px normalized to 400px. */
 :root {
-  --pickup-list-collapsed-height: 244px;
+  --pickup-list-collapsed-height: var(--vi-layout-list-height);
   --pickup-list-expanded-height: calc(100% - var(--space-10));
   --pickup-list-heading-inset: var(--space-8);
   --pickup-list-search-height: var(--vi-vr-mint);
@@ -638,7 +634,7 @@
 :root {
   --header-search-height: var(--icon-button-panel-size);
   --header-search-icon-inset: var(--space-4);
-  --header-search-results-top: 100%;
+  --header-search-results-top: var(--vi-spacing-full);
   --header-search-results-height: calc(100dvh - var(--status-height) - var(--header-height));
   --header-search-actions-width: calc(3 * var(--product-header-action-size) + 2 * var(--space-4));
   --search-tile-photo-size: var(--space-px-80);
@@ -694,3 +690,12 @@
   :root { --header-search-results-height: calc(100dvh - var(--space-10) * 2 - var(--status-height) - var(--header-height)); }
 }
 :root { --focus-offset-inset: calc(-1 * var(--vi-vr-peal)); --filter-press: brightness(0.93); --product-photo-transform: scale(1.13); }
+
+/* Journal text measure, explicit user decision 2026-11-07. */
+:root { --journal-text-max-width: 700px; }
+
+/* Journal content width, explicit user decision 2026-11-07. */
+:root { --journal-content-max-width: 800px; }
+
+/* Journal metric column, explicit user decision 2026-11-07. */
+:root { --journal-metrics-width: 200px; }
