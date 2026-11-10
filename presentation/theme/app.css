@@ -516,9 +516,14 @@
   --sheet-date-min-height: 346px;
   --sheet-heading-content-gap: var(--space-4);
   --sheet-heading-top-gap: var(--space-2);
+  --sheet-heading-action-overhang: calc((var(--icon-button-size) - var(--text-heading-leading)) / 2);
+  --sheet-heading-action-margin: calc(-1 * var(--sheet-heading-action-overhang));
+  --sheet-heading-text-top-padding: calc(var(--sheet-heading-top-gap) + var(--sheet-heading-action-overhang));
   --surface-close-size: var(--icon-button-size);
   --sheet-header-padding: var(--space-zero) var(--space-9) var(--sheet-heading-content-gap) var(--space-zero);
   --sheet-content-padding: var(--space-zero) var(--space-1) var(--space-2);
+  --lifting-context-end-offset: calc(-1 * var(--space-1));
+  --lifting-info-top-offset: calc((var(--icon-field-24) - var(--icon-button-size)) / 2);
   --sheet-subheading-padding: var(--space-zero) var(--space-1) var(--space-4);
   --sheet-footer-gap: var(--space-5);
   --sheet-footer-padding: var(--space-6) var(--space-zero) var(--space-zero);
