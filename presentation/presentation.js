@@ -10,8 +10,91 @@ const toggle = document.getElementById('contents-toggle');
 const contentsList = document.getElementById('contents-list');
 const progress = document.getElementById('progress');
 const fullscreen = document.getElementById('fullscreen');
-let current = 0;
+let current = -1;
+let selected = 0;
+let selection = 0;
 let arrowFrame = 0;
+
+// Successful decodes are reusable; failures are deliberately evicted for revisits.
+const resources = new Map();
+const preparations = new Map();
+function decodeResource(url, priority) {
+  let resource = resources.get(url);
+  if (!resource) {
+    const image = new Image();
+    image.fetchPriority = priority;
+    image.src = url;
+    resource = { image, promise: image.decode().then(() => true, () => {
+      resources.delete(url);
+      return false;
+    }) };
+    resources.set(url, resource);
+  }
+  if (priority === 'high') resource.image.fetchPriority = priority;
+  return resource.promise;
+}
+
+function prepare(index, priority) {
+  const slide = slides[index];
+  if (!slide) return Promise.resolve();
+  // Promote a neighbouring slide if it becomes the selected destination.
+  if (priority === 'high') {
+    slide.querySelectorAll('img').forEach(image => { image.fetchPriority = priority; });
+  }
+  if (preparations.has(index)) return preparations.get(index);
+  const images = [...slide.querySelectorAll('img')].map(async image => {
+    image.fetchPriority = priority;
+    image.loading = 'eager';
+    if (image.complete && !image.naturalWidth) {
+      const source = image.getAttribute('src');
+      image.removeAttribute('src');
+      image.setAttribute('src', source);
+    }
+    try { await image.decode(); return true; }
+    catch { return false; }
+  });
+  // SVG <image> has no decode(): decode the same unmodified URL with an Image.
+  for (const image of slide.querySelectorAll('image')) {
+    const source = image.getAttribute('href');
+    const url = new URL(source, document.baseURI).href;
+    images.push(decodeResource(url, priority).then(ready => {
+      if (!ready) return false;
+      // Also wait for the SVG consumer, including a fresh attempt after an error.
+      return new Promise(resolve => {
+        const finish = event => {
+          image.removeEventListener('load', finish);
+          image.removeEventListener('error', finish);
+          if (event.type === 'error') resources.delete(url);
+          resolve(event.type === 'load');
+        };
+        image.addEventListener('load', finish);
+        image.addEventListener('error', finish);
+        image.removeAttribute('href');
+        image.setAttribute('href', source);
+      });
+    }));
+  }
+  const fonts = new Map();
+  for (const element of [slide, ...slide.querySelectorAll('*')]) {
+    const style = getComputedStyle(element);
+    for (const match of style.backgroundImage.matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
+      images.push(decodeResource(new URL(match[1], document.baseURI).href, priority));
+    }
+    if ([...element.childNodes].some(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim())) {
+      const font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      fonts.set(font, (fonts.get(font) || '') + element.textContent);
+    }
+  }
+  const ready = Promise.all([
+    Promise.all(images),
+    Promise.all([...fonts].map(([font, text]) => document.fonts.load(font, text)))
+      .catch(() => {}).then(() => document.fonts.ready),
+  ]).then(([results]) => {
+    if (results.some(result => !result)) preparations.delete(index);
+  });
+  preparations.set(index, ready);
+  return ready;
+}
 
 // Bind Russian prepositions, short conjunctions and particles to the next word.
 for (const slide of slides) {
@@ -68,7 +151,7 @@ function queueFocusArrows() {
   cancelAnimationFrame(arrowFrame);
   arrowFrame = requestAnimationFrame(() => {
     if (matchMedia('print').matches) slides.forEach(drawFocusArrows);
-    else drawFocusArrows(slides[current]);
+    else if (current >= 0) drawFocusArrows(slides[current]);
   });
 }
 
@@ -89,18 +172,29 @@ slides.forEach((slide, index) => {
   progress.append(segment);
 });
 
-function show(index, updateHash = true) {
-  current = Math.max(0, Math.min(slides.length - 1, index));
+async function show(index, updateHash = true) {
+  selected = Math.max(0, Math.min(slides.length - 1, index));
+  const target = selected;
+  const request = ++selection;
+  previous.disabled = selected === 0;
+  next.disabled = selected === slides.length - 1;
+  if (updateHash) history.replaceState(null, '', `#${selected + 1}`);
+  await prepare(target, 'high');
+  if (request !== selection) return;
+  current = target;
   slides.forEach((slide, i) => {
     slide.hidden = i !== current;
     contentsList.children[i].firstElementChild.setAttribute('aria-current', String(i === current));
     progress.children[i].setAttribute('aria-current', String(i === current));
   });
   count.textContent = `${String(current + 1).padStart(2, '0')} / ${slides.length}`;
-  previous.disabled = current === 0;
-  next.disabled = current === slides.length - 1;
-  if (updateHash) history.replaceState(null, '', `#${current + 1}`);
   queueFocusArrows();
+  // Warm neighbours after committing the slide, without delaying navigation.
+  requestAnimationFrame(() => {
+    if (request !== selection) return;
+    prepare(current - 1, 'low');
+    prepare(current + 1, 'low');
+  });
 }
 
 function readHash() {
@@ -120,8 +214,8 @@ function resize() {
   queueFocusArrows();
 }
 
-previous.addEventListener('click', () => show(current - 1));
-next.addEventListener('click', () => show(current + 1));
+previous.addEventListener('click', () => show(selected - 1));
+next.addEventListener('click', () => show(selected + 1));
 // COMMON: tap either half of the viewing area, including space around the slide.
 // Use the resulting click once for both touch and mouse; drags and pinch gestures
 // must not turn pages, and links keep their own actions.
@@ -142,7 +236,7 @@ viewport.addEventListener('click', event => {
   if (!gesture || gesture.moved || event.button !== 0 || event.defaultPrevented || interactive(event.target) || window.getSelection()?.toString()) return;
   if (Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) > 10) return;
   const bounds = viewport.getBoundingClientRect();
-  show(current + (event.clientX < bounds.left + bounds.width / 2 ? -1 : 1));
+  show(selected + (event.clientX < bounds.left + bounds.width / 2 ? -1 : 1));
 });
 toggle.addEventListener('click', () => {
   contents.hidden = !contents.hidden;
@@ -174,9 +268,9 @@ document.addEventListener('fullscreenchange', () => {
 document.addEventListener('keydown', event => {
   if (event.ctrlKey || event.altKey || event.metaKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
   if (['ArrowRight', 'PageDown'].includes(event.key) || (event.key === ' ' && (event.target === document.body || document.fullscreenElement === viewer))) {
-    event.preventDefault(); show(current + 1);
+    event.preventDefault(); show(selected + 1);
   } else if (['ArrowLeft', 'PageUp'].includes(event.key)) {
-    event.preventDefault(); show(current - 1);
+    event.preventDefault(); show(selected - 1);
   } else if (event.key === 'Home') {
     event.preventDefault(); show(0);
   } else if (event.key === 'End') {
